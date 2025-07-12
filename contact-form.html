@@ -1,0 +1,228 @@
+<\!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>講演のご依頼 - 平井宗助</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
+    <\!-- ナビゲーション -->
+    <nav class="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-blue-600 hover:text-blue-800 transition-colors">← ホームに戻る</a>
+                <h1 class="text-2xl font-bold gradient-text">講演のご依頼</h1>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto">
+            <\!-- ヘッダーセクション -->
+            <div class="text-center mb-12">
+                <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center text-white text-3xl">
+                    🎤
+                </div>
+                <h1 class="text-4xl font-bold gradient-text mb-4">講演のご依頼</h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    奈良の食文化、地域活性化、かき氷文化などについて<br>
+                    お気軽にご相談ください
+                </p>
+            </div>
+
+            <\!-- 講演テーマ紹介 -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">主な講演テーマ</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-4xl mb-4">🍧</div>
+                        <h3 class="text-xl font-bold text-blue-600 mb-3">かき氷文化と地域振興</h3>
+                        <p class="text-gray-600 text-sm">夏の風物詩を通年の文化に発展させた取り組みと地域活性化への効果</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-4xl mb-4">🍱</div>
+                        <h3 class="text-xl font-bold text-green-600 mb-3">伝統食文化の継承</h3>
+                        <p class="text-gray-600 text-sm">柿の葉ずしを通じた奈良の食文化と歴史の継承について</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-4xl mb-4">🏪</div>
+                        <h3 class="text-xl font-bold text-purple-600 mb-3">商店街活性化</h3>
+                        <p class="text-gray-600 text-sm">餅飯殿センター街での実践的な地域コミュニティ活性化手法</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-4xl mb-4">🌍</div>
+                        <h3 class="text-xl font-bold text-orange-600 mb-3">地域ブランドの国際展開</h3>
+                        <p class="text-gray-600 text-sm">ドイツ、サウジアラビアでのkakigori展開事例</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-4xl mb-4">🍃</div>
+                        <h3 class="text-xl font-bold text-red-600 mb-3">柿の葉の可能性</h3>
+                        <p class="text-gray-600 text-sm">柿の葉加工事業を通じた新たな地域資源の活用</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-4xl mb-4">🏛️</div>
+                        <h3 class="text-xl font-bold text-indigo-600 mb-3">観光まちづくり</h3>
+                        <p class="text-gray-600 text-sm">各種観光イベントでの実行委員会経験を活かした地域振興</p>
+                    </div>
+                </div>
+            </section>
+
+            <\!-- お問い合わせフォーム -->
+            <section class="mb-12">
+                <div class="bg-white rounded-3xl p-8 shadow-xl">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">お問い合わせフォーム</h2>
+                    
+                    <form action="mailto:info@kakiha.net" method="post" enctype="text/plain" class="space-y-6">
+                        <\!-- お名前 -->
+                        <div>
+                            <label for="name" class="block text-lg font-medium text-gray-700 mb-2">
+                                お名前 <span class="text-red-500">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                required
+                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                                placeholder="山田太郎"
+                            >
+                        </div>
+
+                        <\!-- 連絡先 -->
+                        <div>
+                            <label for="contact" class="block text-lg font-medium text-gray-700 mb-2">
+                                連絡先 <span class="text-red-500">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="contact" 
+                                name="contact" 
+                                required
+                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                                placeholder="メールアドレスまたは電話番号"
+                            >
+                            <p class="text-sm text-gray-500 mt-1">メールアドレスまたは電話番号をご入力ください</p>
+                        </div>
+
+                        <\!-- お問い合わせ内容 -->
+                        <div>
+                            <label for="message" class="block text-lg font-medium text-gray-700 mb-2">
+                                お問い合わせ内容 <span class="text-red-500">*</span>
+                            </label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="8" 
+                                required
+                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+                                placeholder="以下の内容をご記入ください：&#10;&#10;・講演テーマ（ご希望がありましたら）&#10;・開催予定日時&#10;・開催場所&#10;・参加予定人数&#10;・その他ご要望やご質問"
+                            ></textarea>
+                        </div>
+
+                        <\!-- 送信ボタン -->
+                        <div class="text-center pt-6">
+                            <button 
+                                type="submit"
+                                class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-4 rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                            >
+                                📧 メールで送信
+                            </button>
+                            <p class="text-sm text-gray-500 mt-4">
+                                送信ボタンをクリックするとメールアプリが起動します<br>
+                                件名と本文が自動入力されますので、そのまま送信してください
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <\!-- 直接連絡先 -->
+            <section class="mb-12">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">直接ご連絡の場合</h3>
+                    <div class="text-center space-y-4">
+                        <div class="bg-white rounded-xl p-6 shadow-md">
+                            <div class="text-3xl mb-2">📧</div>
+                            <h4 class="font-bold text-gray-800 mb-2">メールアドレス</h4>
+                            <a href="mailto:info@kakiha.net" class="text-blue-600 hover:text-blue-800 text-lg font-medium">
+                                info@kakiha.net
+                            </a>
+                        </div>
+                        <p class="text-gray-600">
+                            お忙しい中恐れ入りますが、お返事まで数日いただく場合がございます。<br>
+                            お急ぎの場合は、お問い合わせ内容に「急用」とご記載ください。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <\!-- 実績紹介 -->
+            <section class="mb-12">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">講演・イベント実績（予定含む）</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h4 class="font-bold text-blue-600 mb-2">大阪・関西万博</h4>
+                        <p class="text-gray-600 mb-2">2025年5月</p>
+                        <p class="text-sm text-gray-500">「ALL NARA FESTIVAL」にて柿の葉ずし/かき氷について講演予定</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h4 class="font-bold text-green-600 mb-2">ドイツ展開</h4>
+                        <p class="text-gray-600 mb-2">2024年5月</p>
+                        <p class="text-sm text-gray-500">ベルリン・ミュンヘンにてkakigoriワークショップ開催</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h4 class="font-bold text-orange-600 mb-2">PRADA mode osaka</h4>
+                        <p class="text-gray-600 mb-2">2025年6月予定</p>
+                        <p class="text-sm text-gray-500">PRADAのイベントに出店予定</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h4 class="font-bold text-purple-600 mb-2">サウジアラビア</h4>
+                        <p class="text-gray-600 mb-2">2025年1月</p>
+                        <p class="text-sm text-gray-500">人気カフェ「大川」にてkakigori技術提供</p>
+                    </div>
+                </div>
+            </section>
+
+            <\!-- ナビゲーションボタン -->
+            <div class="text-center space-y-4">
+                <a href="index.html" class="inline-block bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
+                    活動紹介ページに戻る
+                </a>
+                <div class="flex justify-center space-x-4">
+                    <a href="profile.html" class="text-blue-600 hover:text-blue-800 underline">詳細プロフィール</a>
+                    <a href="https://note.com/a_rimbaud" target="_blank" class="text-orange-600 hover:text-orange-800 underline">note</a>
+                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="text-pink-600 hover:text-pink-800 underline">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 Sousuke Hirai. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+EOF < /dev/null
