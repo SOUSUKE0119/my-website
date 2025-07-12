@@ -1,0 +1,230 @@
+<\!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平井宗助 - 詳細プロフィール</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            background: #3B82F6;
+            border-radius: 50%;
+        }
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 0.375rem;
+            top: 1.25rem;
+            width: 2px;
+            height: calc(100% - 1rem);
+            background: #E5E7EB;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
+    <\!-- ナビゲーション -->
+    <nav class="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-blue-600 hover:text-blue-800 transition-colors">← 活動紹介に戻る</a>
+                <h1 class="text-2xl font-bold gradient-text">詳細プロフィール</h1>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto">
+            <\!-- ヘッダー -->
+            <div class="text-center mb-16">
+                <div class="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mx-auto mb-6 flex items-center justify-center text-white text-4xl">
+                    平井
+                </div>
+                <h1 class="text-4xl font-bold gradient-text mb-4">平井宗助</h1>
+                <p class="text-xl text-gray-600">SOUSUKE HIRAI</p>
+                <p class="text-gray-500 mt-2">昭和46年（1971年）奈良県吉野郡吉野町生まれ</p>
+            </div>
+
+            <\!-- 経歴セクション -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-500 pl-4">経歴</h2>
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="space-y-6">
+                        <div class="timeline-item">
+                            <div class="font-semibold text-blue-600">昭和46年</div>
+                            <div class="text-gray-700">奈良県吉野郡吉野町に生まれる</div>
+                            <div class="text-sm text-gray-500 mt-1">椿井小学校・清風学園高校を経て</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-semibold text-blue-600">平成7年</div>
+                            <div class="text-gray-700">慶應義塾大学商学部卒業</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-semibold text-blue-600">平成7年</div>
+                            <div class="text-gray-700">株式会社パレスホテル 入社</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-semibold text-blue-600">平成9年</div>
+                            <div class="text-gray-700">株式会社柿の葉ずし 入社</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-semibold text-blue-600">平成16年</div>
+                            <div class="text-gray-700">（社）奈良青年会議所 入会（平成23年卒業）</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-semibold text-blue-600">平成23年</div>
+                            <div class="text-gray-700">株式会社柿の葉ずし 代表取締役</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-semibold text-blue-600">平成27年</div>
+                            <div class="text-gray-700">合同会社ほうせき箱 設立（代表社員として現在に至る）</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-semibold text-blue-600">平成29年</div>
+                            <div class="text-gray-700">株式会社柿の葉ずし 退職</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-semibold text-blue-600">令和4年</div>
+                            <div class="text-gray-700">奈良餅飯殿センター街協同組合 副理事長</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-semibold text-blue-600">令和6年</div>
+                            <div class="text-gray-700">株式会社柿の葉ずし 復職（現在 専務取締役）</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <\!-- 観光事業ボランティア経歴 -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-green-500 pl-4">観光事業ボランティア経歴</h2>
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div class="p-4 bg-green-50 rounded-lg">
+                                <div class="font-semibold text-green-600">平成16年～17年</div>
+                                <div class="text-gray-700">NPO法人なら燈花会実行委員会</div>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg">
+                                <div class="font-semibold text-blue-600">平成19年～22年</div>
+                                <div class="text-gray-700">平城遷都祭実行委員会</div>
+                            </div>
+                            <div class="p-4 bg-purple-50 rounded-lg">
+                                <div class="font-semibold text-purple-600">平成21年～27年</div>
+                                <div class="text-gray-700">NPO法人なら国際映画祭実行委員会</div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-indigo-50 rounded-lg">
+                                <div class="font-semibold text-indigo-600">平成21年～27年</div>
+                                <div class="text-gray-700">なら瑠璃絵実行委員会</div>
+                            </div>
+                            <div class="p-4 bg-cyan-50 rounded-lg">
+                                <div class="font-semibold text-cyan-600">平成26年～現在</div>
+                                <div class="text-gray-700">ひむろしらゆき祭実行委員会</div>
+                            </div>
+                            <div class="p-4 bg-orange-50 rounded-lg">
+                                <div class="font-semibold text-orange-600">平成27年～現在</div>
+                                <div class="text-gray-700">奈良かき氷ガイド制作委員会</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <\!-- 合同会社ほうせき箱 -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-orange-500 pl-4">合同会社ほうせき箱について</h2>
+                <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-8 shadow-lg">
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-orange-600 mb-3">設立・店舗展開</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                2015年2月設立。かき氷を中心とした喫茶営業を行う会社として、平井宗助・岡田桂子を共同代表として同年3月「こおりとお茶のお店ほうせき箱」を奈良もちいどのセンター街にオープン（5坪 カウンター13席）。2018年3月、同商店街内に移転（30坪36席）。夏だけの食文化であったかき氷を通年で楽しめる商材として進化させ、真冬も賑わうお店に。
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-green-600 mb-3">柿の葉加工事業</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                2017年柿葉の持つ健康機能性に注目し「柿の葉加工事業」を立ち上げ。約0.7ha（7000㎡）の柿葉園を管理し、柿葉の栽培、加工（お茶・調味料・入浴剤等）、販売を行う。2022年4月「柿の葉茶専門店SOUSUKE」を奈良公園バスターミナル内にオープン。
+                            </p>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-blue-600 mb-3">国内外での展開</h3>
+                            <div class="space-y-3 text-gray-700">
+                                <p>• 2023年12月〜2024年1月：ONITSUKA TIGER銀座POP UP STOREにてかき氷提供のCAFE75をコラボで運営</p>
+                                <p>• 2024年5月：ベルリン(Tenzan Lab)・ミュンヘン(Tohru in der Schreiberei)にてドイツの飲食関連事業者及びメディアに向けkakigoriワークショップ及びkakigori提供</p>
+                                <p>• 2025年1月：サウジアラビアの人気カフェ「大川」にてkakigoriの技術提供</p>
+                                <p>• 2025年5月：大阪・関西万博にて「ALL NARA FESTIVAL」に登壇 柿の葉ずし/かき氷について講演予定</p>
+                                <p>• 2025年6月：PRADAのイベント「PRADA mode osaka」に出店予定</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <\!-- 総本家平宗 -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-red-500 pl-4">総本家平宗について</h2>
+                <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+                    <div class="bg-white rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">文久元年（1861年）創業</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            平宗という屋号で、大和上市にて平井宗八が川魚や乾物を扱う商いを始める。その後料理屋、旅館を経て現在は柿の葉ずしの製造販売および飲食店を中心とした事業に。
+                        </p>
+                        <div class="bg-red-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-red-700 mb-2">現在の事業規模</h4>
+                            <ul class="text-gray-700 space-y-1">
+                                <li>• 県内外に直営店14店舗</li>
+                                <li>• ECサイトの運営</li>
+                                <li>• 通信販売事業</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <\!-- リンクボタン -->
+            <div class="text-center space-y-4">
+                <a href="index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
+                    活動紹介ページに戻る
+                </a>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://note.com/a_rimbaud" target="_blank" class="text-orange-600 hover:text-orange-800 underline">note</a>
+                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="text-pink-600 hover:text-pink-800 underline">Instagram</a>
+                    <a href="https://sousuke-kakiha.com" target="_blank" class="text-green-600 hover:text-green-800 underline">柿の葉茶専門店SOUSUKE</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 Sousuke Hirai. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+EOF < /dev/null
