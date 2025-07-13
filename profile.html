@@ -41,9 +41,9 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
+<body class="bg-gray-50 min-h-screen">
     
-    <nav class="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="text-blue-600 hover:text-blue-800 transition-colors">← 活動紹介に戻る</a>
@@ -230,64 +230,154 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Instagram 最新投稿</h2>
             <div class="flex overflow-x-auto space-x-6 pb-4">
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <!-- ほうせき箱 Instagram -->
+                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
                     <a href="https://www.instagram.com/housekibaco/" target="_blank" class="block">
-                        <div class="w-64 h-64 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                            <div class="text-center text-white">
-                                <div class="text-4xl mb-2">🍧</div>
-                                <div class="font-bold">ほうせき箱</div>
-                                <div class="text-sm opacity-80">@housekibaco</div>
+                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
+                            <img src="IMG_1769.JPG" alt="ほうせき箱の最新かき氷" class="instagram-image" loading="lazy">
+                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
+                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                                Live
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 text-white">
+                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
+                                    <h4 class="font-bold text-sm">ほうせき箱</h4>
+                                    <p class="text-xs opacity-90">@housekibaco</p>
+                                </div>
                             </div>
                         </div>
                         <div class="p-4">
-                            <h3 class="font-bold text-gray-800 text-sm">ほうせき箱</h3>
-                            <p class="text-xs text-gray-600">最新のかき氷情報をお届け</p>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white text-xs">🍧</div>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800 text-sm">ほうせき箱</h3>
+                                        <p class="text-xs text-gray-500">2時間前</p>
+                                    </div>
+                                </div>
+                                <div class="text-pink-500">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-600">本日のスペシャルかき氷✨</p>
                         </div>
                     </a>
                 </div>
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <!-- 鹿活 Instagram -->
+                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
                     <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="block">
-                        <div class="w-64 h-64 bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center">
-                            <div class="text-center text-white">
-                                <div class="text-4xl mb-2">🦌</div>
-                                <div class="font-bold">奈良鹿活</div>
-                                <div class="text-sm opacity-80">@lovenaradeer</div>
+                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
+                            <img src="DSC08803.jpg" alt="奈良公園の鹿" class="instagram-image" loading="lazy">
+                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
+                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                                Live
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 text-white">
+                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
+                                    <h4 class="font-bold text-sm">奈良鹿活</h4>
+                                    <p class="text-xs opacity-90">@lovenaradeer</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="p-4">
-                            <h3 class="font-bold text-gray-800 text-sm">Love Nara Deer</h3>
-                            <p class="text-xs text-gray-600">奈良公園の鹿たちの日常</p>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-600 rounded-full flex items-center justify-center text-white text-xs">🦌</div>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800 text-sm">Love Nara Deer</h3>
+                                        <p class="text-xs text-gray-500">5時間前</p>
+                                    </div>
+                                </div>
+                                <div class="text-pink-500">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-600">奈良公園の美しい夕暮れ時🦌</p>
                         </div>
                     </a>
                 </div>
                 <!-- 柿の葉加工事業 Instagram -->
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
                     <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="block">
-                        <div class="w-64 h-64 bg-gradient-to-br from-red-400 to-pink-600 flex items-center justify-center">
-                            <div class="text-center text-white">
-                                <div class="text-4xl mb-2">🍃</div>
-                                <div class="font-bold">柿の葉加工事業</div>
+                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
+                            <img src="DSC04887.jpg" alt="柿の葉" class="instagram-image" loading="lazy">
+                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
+                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                                Live
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 text-white">
+                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
+                                    <h4 class="font-bold text-sm">柿の葉加工事業</h4>
+                                    <p class="text-xs opacity-90">@kakiha_sousuke</p>
+                                </div>
                             </div>
                         </div>
                         <div class="p-4">
-                            <h3 class="font-bold text-gray-800 text-sm">柿の葉茶専門店SOUSUKE</h3>
-                            <p class="text-xs text-gray-600">柿の葉加工事業の最新情報</p>                        </div>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-red-400 to-pink-600 rounded-full flex items-center justify-center text-white text-xs">🍃</div>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800 text-sm">柿の葉茶専門店SOUSUKE</h3>
+                                        <p class="text-xs text-gray-500">1日前</p>
+                                    </div>
+                                </div>
+                                <div class="text-pink-500">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-600">新鮮な柿の葉を収穫🍃</p>
                         </div>
                     </a>
                 </div>
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <!-- 平宗 Instagram -->
+                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
                     <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="block">
-                        <div class="w-64 h-64 bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center">
-                            <div class="text-center text-white">
-                                <div class="text-4xl mb-2">🍱</div>
-                                <div class="font-bold">平宗</div>
-                                <div class="text-sm opacity-80">@hiraso_jp</div>
+                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
+                            <img src="kakinohazushi.jpg" alt="柿の葉ずし" class="instagram-image" loading="lazy">
+                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
+                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                                Live
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 text-white">
+                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
+                                    <h4 class="font-bold text-sm">平宗</h4>
+                                    <p class="text-xs opacity-90">@hiraso_jp</p>
+                                </div>
                             </div>
                         </div>
                         <div class="p-4">
-                            <h3 class="font-bold text-gray-800 text-sm">総本家平宗</h3>
-                            <p class="text-xs text-gray-600">柿の葉ずしの老舗</p>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center text-white text-xs">🍱</div>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800 text-sm">総本家平宗</h3>
+                                        <p class="text-xs text-gray-500">3時間前</p>
+                                    </div>
+                                </div>
+                                <div class="text-pink-500">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-600">伝統の柿の葉ずし🍱</p>
                         </div>
-                    </a>                    </a>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <p class="text-gray-600 mb-4">最新の活動をInstagramでチェック！</p>
+                <div class="flex justify-center space-x-4 flex-wrap">
+                    <a href="https://www.instagram.com/housekibaco/" target="_blank" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@housekibaco</a>
+                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="bg-gradient-to-r from-pink-500 to-orange-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@lovenaradeer</a>
+                    <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="bg-gradient-to-r from-red-500 to-pink-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@kakiha_sousuke</a>
+                    <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@hiraso_jp</a>
                 </div>
             </div>
         </div>

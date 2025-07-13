@@ -10,6 +10,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // コンソールログ（開発用）
     console.log('SOUSUKEの活動紹介サイトが読み込まれました');
     
+    // Instagram画像のエラーハンドリング
+    const instagramImages = document.querySelectorAll('.instagram-image');
+    
+    instagramImages.forEach(function(img) {
+        img.addEventListener('error', function() {
+            console.error('画像の読み込みに失敗しました:', this.src);
+            this.style.backgroundColor = '#f3f4f6';
+            this.style.display = 'block';
+        });
+        
+        img.addEventListener('load', function() {
+            console.log('画像が正常に読み込まれました:', this.src);
+        });
+    });
+    
     // 外部リンクの処理
     const externalLinks = document.querySelectorAll('a[target="_blank"]');
     externalLinks.forEach(link => {
