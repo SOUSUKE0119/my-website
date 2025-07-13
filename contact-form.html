@@ -7,148 +7,144 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Noto Sans JP', sans-serif; }
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        * { font-family: 'Inter', sans-serif; font-weight: 300; }
+        .thin-text { font-weight: 200; }
+        .normal-text { font-weight: 300; }
+        .medium-text { font-weight: 400; }
+        .semi-bold-text { font-weight: 500; }
         .form-input {
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         .form-input:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #6B7280;
+            box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.1);
         }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-gray-50 text-gray-800 normal-text min-h-screen">
     
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4">
+        <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="text-blue-600 hover:text-blue-800 transition-colors">← ホームに戻る</a>
-                <h1 class="text-2xl font-bold gradient-text">講演のご依頼</h1>
+                <a href="index.html" class="text-gray-600 hover:text-gray-800 transition-colors text-sm">← ホームに戻る</a>
+                <h1 class="text-xl medium-text text-gray-900">講演のご依頼</h1>
                 <div></div>
             </div>
         </div>
     </nav>
 
-    <main class="container mx-auto px-4 py-12">
+    <main class="container mx-auto px-6 py-16">
         <div class="max-w-4xl mx-auto">
             
-            <div class="text-center mb-12">
-                <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center text-white text-3xl">
-                    🎤
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <div class="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-8 flex items-center justify-center border border-gray-300">
+                    <span class="text-gray-600 medium-text">🎤</span>
                 </div>
-                <h1 class="text-4xl font-bold gradient-text mb-4">講演のご依頼</h1>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                <h1 class="text-3xl medium-text text-gray-900 mb-6">講演のご依頼</h1>
+                <p class="text-gray-600 thin-text max-w-2xl mx-auto text-sm">
                     奈良の食文化、地域活性化、かき氷文化などについて<br>
                     お気軽にご相談ください
                 </p>
             </div>
 
-            
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">主な講演テーマ</h2>
+            <!-- Lecture Themes -->
+            <section class="mb-16">
+                <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-12">主な講演テーマ</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                        <div class="text-4xl mb-4">🍧</div>
-                        <h3 class="text-xl font-bold text-blue-600 mb-3">かき氷文化と地域振興</h3>
-                        <p class="text-gray-600 text-sm">夏の風物詩を通年の文化に発展させた取り組みと地域活性化への効果</p>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-gray-300 transition-colors hover:-translate-y-1 hover:shadow-lg">
+                        <h3 class="text-lg medium-text text-gray-800 mb-3 leading-relaxed">イベント×食で地域課題を解決する</h3>
+                        <p class="text-gray-600 thin-text text-sm leading-relaxed">かき氷祭・柿の葉寿司フェアなど"集い"を仕掛けて観光・雇用・関係人口を増やす方法</p>
                     </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                        <div class="text-4xl mb-4">🍱</div>
-                        <h3 class="text-xl font-bold text-green-600 mb-3">伝統食文化の継承</h3>
-                        <p class="text-gray-600 text-sm">柿の葉ずしを通じた奈良の食文化と歴史の継承について</p>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-gray-300 transition-colors hover:-translate-y-1 hover:shadow-lg">
+                        <h3 class="text-lg medium-text text-gray-800 mb-3 leading-relaxed">奈良の歴史文化を映す商品開発＆マーケティング</h3>
+                        <p class="text-gray-600 thin-text text-sm leading-relaxed">郷土ストーリーを二段階で伝える（県内共感 → 県外・海外）手法</p>
                     </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                        <div class="text-4xl mb-4">🏪</div>
-                        <h3 class="text-xl font-bold text-purple-600 mb-3">商店街活性化</h3>
-                        <p class="text-gray-600 text-sm">餅飯殿センター街での実践的な地域コミュニティ活性化手法</p>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-gray-300 transition-colors hover:-translate-y-1 hover:shadow-lg">
+                        <h3 class="text-lg medium-text text-gray-800 mb-3 leading-relaxed">柿の葉寿司に学ぶ吉野の食文化と物語力</h3>
+                        <p class="text-gray-600 thin-text text-sm leading-relaxed">押し寿司・なれ寿司の発達史と芸能・文学を活かした物語マーケティング</p>
                     </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                        <div class="text-4xl mb-4">🌍</div>
-                        <h3 class="text-xl font-bold text-orange-600 mb-3">地域ブランドの国際展開</h3>
-                        <p class="text-gray-600 text-sm">ドイツ、サウジアラビアでのkakigori展開事例</p>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-gray-300 transition-colors hover:-translate-y-1 hover:shadow-lg">
+                        <h3 class="text-lg medium-text text-gray-800 mb-3 leading-relaxed">商店街リノベと起業プラットフォーム</h3>
+                        <p class="text-gray-600 thin-text text-sm leading-relaxed">「餅飯殿 NEXT＋」に学ぶ空き店舗活用と個性派ショップ育成</p>
                     </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                        <div class="text-4xl mb-4">🍃</div>
-                        <h3 class="text-xl font-bold text-red-600 mb-3">柿の葉の可能性</h3>
-                        <p class="text-gray-600 text-sm">柿の葉加工事業を通じた新たな地域資源の活用</p>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-gray-300 transition-colors hover:-translate-y-1 hover:shadow-lg">
+                        <h3 class="text-lg medium-text text-gray-800 mb-3 leading-relaxed">老舗承継 × 新規創業のリアル</h3>
+                        <p class="text-gray-600 thin-text text-sm leading-relaxed">二代目・三代目の葛藤とチャンス──伝統企業とスタートアップを同時に走らせる方法</p>
                     </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                        <div class="text-4xl mb-4">🏛️</div>
-                        <h3 class="text-xl font-bold text-indigo-600 mb-3">観光まちづくり</h3>
-                        <p class="text-gray-600 text-sm">各種観光イベントでの実行委員会経験を活かした地域振興</p>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-gray-300 transition-colors hover:-translate-y-1 hover:shadow-lg">
+                        <h3 class="text-lg medium-text text-gray-800 mb-3 leading-relaxed">"生きる力を育む"キャリア教育</h3>
+                        <p class="text-gray-600 thin-text text-sm leading-relaxed">適材適職のチームビルディング・没頭できることを掛け算に！</p>
                     </div>
                 </div>
             </section>
 
-            
-            <section class="mb-12">
-                <div class="bg-white rounded-3xl p-8 shadow-xl">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">お問い合わせフォーム</h2>
+            <!-- Contact Form -->
+            <section class="mb-16">
+                <div class="bg-white rounded-lg border border-gray-200 p-8">
+                    <h2 class="text-2xl medium-text text-gray-900 mb-8 text-center">講演のお問い合わせ</h2>
                     
-                    <form action="mailto:info@kakiha.net" method="post" enctype="text/plain" class="space-y-6">
+                    <form id="contactForm" class="space-y-6">
                         
                         <div>
-                            <label for="name" class="block text-lg font-medium text-gray-700 mb-2">
-                                お名前 <span class="text-red-500">*</span>
+                            <label for="name" class="block text-sm medium-text text-gray-700 mb-2">
+                                お名前 <span class="text-red-400">*</span>
                             </label>
                             <input 
                                 type="text" 
                                 id="name" 
                                 name="name" 
                                 required
-                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none text-sm"
                                 placeholder="山田太郎"
                             >
                         </div>
 
-                        
                         <div>
-                            <label for="contact" class="block text-lg font-medium text-gray-700 mb-2">
-                                連絡先 <span class="text-red-500">*</span>
+                            <label for="contact" class="block text-sm medium-text text-gray-700 mb-2">
+                                連絡先 <span class="text-red-400">*</span>
                             </label>
                             <input 
                                 type="text" 
                                 id="contact" 
                                 name="contact" 
                                 required
-                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none text-sm"
                                 placeholder="メールアドレスまたは電話番号"
                             >
-                            <p class="text-sm text-gray-500 mt-1">メールアドレスまたは電話番号をご入力ください</p>
+                            <p class="text-xs text-gray-500 mt-1">メールアドレスまたは電話番号をご入力ください</p>
                         </div>
 
-                        
                         <div>
-                            <label for="message" class="block text-lg font-medium text-gray-700 mb-2">
-                                お問い合わせ内容 <span class="text-red-500">*</span>
+                            <label for="message" class="block text-sm medium-text text-gray-700 mb-2">
+                                お問い合わせ内容 <span class="text-red-400">*</span>
                             </label>
                             <textarea 
                                 id="message" 
                                 name="message" 
                                 rows="8" 
                                 required
-                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
-                                placeholder="以下の内容をご記入ください：&#10;&#10;・講演テーマ（ご希望がありましたら）&#10;・開催予定日時&#10;・開催場所&#10;・参加予定人数&#10;・その他ご要望やご質問"
+                                class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none resize-none text-sm"
+                                placeholder="以下の内容をご記入ください：
+
+・講演テーマ（ご希望がありましたら）
+・開催予定日時
+・開催場所
+・参加予定人数
+・その他ご要望やご質問"
                             ></textarea>
                         </div>
 
-                        
                         <div class="text-center pt-6">
                             <button 
                                 type="submit"
-                                class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-4 rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                                class="bg-gray-800 hover:bg-gray-900 text-white px-8 py-3 rounded-full medium-text text-sm transition-colors"
                             >
                                 メールで送信
                             </button>
-                            <p class="text-sm text-gray-500 mt-4">
+                            <p class="text-xs text-gray-500 mt-4">
                                 送信ボタンをクリックするとメールアプリが起動します<br>
                                 件名と本文が自動入力されますので、そのまま送信してください
                             </p>
@@ -157,228 +153,119 @@
                 </div>
             </section>
 
-            
-            <section class="mb-12">
-                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">直接ご連絡の場合</h3>
+            <!-- Direct Contact -->
+            <section class="mb-16">
+                <div class="bg-white rounded-lg border border-gray-200 p-8">
+                    <h3 class="text-xl medium-text text-gray-900 mb-6 text-center">その他のご連絡、お問い合わせ</h3>
                     <div class="text-center space-y-4">
-                        <div class="bg-white rounded-xl p-6 shadow-md">
-                            <div class="text-3xl mb-2">📧</div>
-                            <h4 class="font-bold text-gray-800 mb-2">メールアドレス</h4>
-                            <a href="mailto:info@kakiha.net" class="text-blue-600 hover:text-blue-800 text-lg font-medium">
+                        <div class="bg-gray-50 rounded-lg border border-gray-200 p-6">
+                            <div class="text-2xl mb-2 text-gray-400">📧</div>
+                            <h4 class="medium-text text-gray-800 mb-2">メールアドレス</h4>
+                            <a href="mailto:info@kakiha.net" class="text-gray-600 hover:text-gray-800 text-sm medium-text">
                                 info@kakiha.net
                             </a>
                         </div>
-                        <p class="text-gray-600">
+                        <p class="text-gray-600 text-sm thin-text">
                             お忙しい中恐れ入りますが、お返事まで数日いただく場合がございます。<br>
-                            お急ぎの場合は、お問い合わせ内容に「急用」とご記載ください。
+                            お急ぎの場合は、お問い合わせ内容に「急用」とご記載ください。<br>
+                            <span class="text-gray-500">※ ご自身にもコピーが必要な場合は、CCにご自身のメールアドレスを追加してください。</span>
                         </p>
                     </div>
                 </div>
             </section>
 
-            
-            <section class="mb-12">
-                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">講演・イベント実績（予定含む）</h3>
+            <!-- Past Achievements -->
+            <section class="mb-16">
+                <h3 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-12">講演実績</h3>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-xl p-6 shadow-md">
-                        <h4 class="font-bold text-blue-600 mb-2">大阪・関西万博</h4>
-                        <p class="text-gray-600 mb-2">2025年5月</p>
-                        <p class="text-sm text-gray-500">「ALL NARA FESTIVAL」にて柿の葉ずし/かき氷について講演予定</p>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <h4 class="medium-text text-gray-800 mb-2">大阪・関西万博</h4>
+                        <p class="text-gray-600 mb-2 text-sm">2025年5月</p>
+                        <p class="text-xs text-gray-500">「ALL NARA FESTIVAL」にて柿の葉ずし/かき氷について講演予定</p>
                     </div>
-                    <div class="bg-white rounded-xl p-6 shadow-md">
-                        <h4 class="font-bold text-green-600 mb-2">ドイツ展開</h4>
-                        <p class="text-gray-600 mb-2">2024年5月</p>
-                        <p class="text-sm text-gray-500">ベルリン・ミュンヘンにてkakigoriワークショップ開催</p>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <h4 class="medium-text text-gray-800 mb-2">ドイツ展開</h4>
+                        <p class="text-gray-600 mb-2 text-sm">2024年5月</p>
+                        <p class="text-xs text-gray-500">ベルリン・ミュンヘンにてkakigoriワークショップ開催</p>
                     </div>
-                    <div class="bg-white rounded-xl p-6 shadow-md">
-                        <h4 class="font-bold text-orange-600 mb-2">PRADA mode osaka</h4>
-                        <p class="text-gray-600 mb-2">2025年6月予定</p>
-                        <p class="text-sm text-gray-500">PRADAのイベントに出店予定</p>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <h4 class="medium-text text-gray-800 mb-2">PRADA mode osaka</h4>
+                        <p class="text-gray-600 mb-2 text-sm">2025年6月予定</p>
+                        <p class="text-xs text-gray-500">PRADAのイベントに出店予定</p>
                     </div>
-                    <div class="bg-white rounded-xl p-6 shadow-md">
-                        <h4 class="font-bold text-purple-600 mb-2">サウジアラビア</h4>
-                        <p class="text-gray-600 mb-2">2025年1月</p>
-                        <p class="text-sm text-gray-500">人気カフェ「大川」にてkakigori技術提供</p>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <h4 class="medium-text text-gray-800 mb-2">サウジアラビア</h4>
+                        <p class="text-gray-600 mb-2 text-sm">2025年1月</p>
+                        <p class="text-xs text-gray-500">人気カフェ「大川」にてkakigori技術提供</p>
                     </div>
                 </div>
             </section>
 
-            
-            <div class="text-center space-y-4">
-                <a href="index.html" class="inline-block bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
-                    活動紹介ページに戻る
-                </a>
-                <div class="flex justify-center space-x-4">
-                    <a href="profile.html" class="text-blue-600 hover:text-blue-800 underline">詳細プロフィール</a>
-                    <a href="https://note.com/a_rimbaud" target="_blank" class="text-orange-600 hover:text-orange-800 underline">note</a>
-                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="text-pink-600 hover:text-pink-800 underline">Instagram</a>
+            <!-- Navigation -->
+            <div class="text-center space-y-6">
+                <div class="flex justify-center space-x-4 flex-wrap">
+                    <a href="index.html" class="inline-flex items-center px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                        ホームに戻る
+                    </a>
+                    <a href="profile.html" class="inline-flex items-center px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                        詳細プロフィール
+                    </a>
+                </div>
+                <div class="flex justify-center space-x-6 text-sm">
+                    <a href="https://note.com/a_rimbaud" target="_blank" class="text-gray-600 hover:text-gray-800 transition-colors">Note</a>
+                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="text-gray-600 hover:text-gray-800 transition-colors">Instagram</a>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Instagram Latest Posts -->
-    <section class="py-16 bg-gradient-to-br from-pink-50 to-purple-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Instagram 最新投稿</h2>
-            <div class="flex overflow-x-auto space-x-6 pb-4">
-                <!-- ほうせき箱 Instagram -->
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
-                    <a href="https://www.instagram.com/housekibaco/" target="_blank" class="block">
-                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
-                            <img src="IMG_1769.JPG" alt="ほうせき箱の最新かき氷" class="instagram-image" loading="lazy">
-                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
-                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                                Live
-                            </div>
-                            <div class="absolute bottom-4 left-4 right-4 text-white">
-                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
-                                    <h4 class="font-bold text-sm">ほうせき箱</h4>
-                                    <p class="text-xs opacity-90">@housekibaco</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white text-xs">🍧</div>
-                                    <div>
-                                        <h3 class="font-bold text-gray-800 text-sm">ほうせき箱</h3>
-                                        <p class="text-xs text-gray-500">2時間前</p>
-                                    </div>
-                                </div>
-                                <div class="text-pink-500">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-600">本日のスペシャルかき氷✨</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- 鹿活 Instagram -->
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
-                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="block">
-                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
-                            <img src="DSC08803.jpg" alt="奈良公園の鹿" class="instagram-image" loading="lazy">
-                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
-                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                                Live
-                            </div>
-                            <div class="absolute bottom-4 left-4 right-4 text-white">
-                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
-                                    <h4 class="font-bold text-sm">奈良鹿活</h4>
-                                    <p class="text-xs opacity-90">@lovenaradeer</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-600 rounded-full flex items-center justify-center text-white text-xs">🦌</div>
-                                    <div>
-                                        <h3 class="font-bold text-gray-800 text-sm">Love Nara Deer</h3>
-                                        <p class="text-xs text-gray-500">5時間前</p>
-                                    </div>
-                                </div>
-                                <div class="text-pink-500">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-600">奈良公園の美しい夕暮れ時🦌</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- 柿の葉加工事業 Instagram -->
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
-                    <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="block">
-                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
-                            <img src="DSC04887.jpg" alt="柿の葉" class="instagram-image" loading="lazy">
-                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
-                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                                Live
-                            </div>
-                            <div class="absolute bottom-4 left-4 right-4 text-white">
-                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
-                                    <h4 class="font-bold text-sm">柿の葉加工事業</h4>
-                                    <p class="text-xs opacity-90">@kakiha_sousuke</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-red-400 to-pink-600 rounded-full flex items-center justify-center text-white text-xs">🍃</div>
-                                    <div>
-                                        <h3 class="font-bold text-gray-800 text-sm">柿の葉茶専門店SOUSUKE</h3>
-                                        <p class="text-xs text-gray-500">1日前</p>
-                                    </div>
-                                </div>
-                                <div class="text-pink-500">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-600">新鮮な柿の葉を収穫🍃</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- 平宗 Instagram -->
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
-                    <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="block">
-                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
-                            <img src="kakinohazushi.jpg" alt="柿の葉ずし" class="instagram-image" loading="lazy">
-                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
-                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                                Live
-                            </div>
-                            <div class="absolute bottom-4 left-4 right-4 text-white">
-                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
-                                    <h4 class="font-bold text-sm">平宗</h4>
-                                    <p class="text-xs opacity-90">@hiraso_jp</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center text-white text-xs">🍱</div>
-                                    <div>
-                                        <h3 class="font-bold text-gray-800 text-sm">総本家平宗</h3>
-                                        <p class="text-xs text-gray-500">3時間前</p>
-                                    </div>
-                                </div>
-                                <div class="text-pink-500">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-600">伝統の柿の葉ずし🍱</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="text-center mt-8">
-                <p class="text-gray-600 mb-4">最新の活動をInstagramでチェック！</p>
-                <div class="flex justify-center space-x-4 flex-wrap">
-                    <a href="https://www.instagram.com/housekibaco/" target="_blank" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@housekibaco</a>
-                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="bg-gradient-to-r from-pink-500 to-orange-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@lovenaradeer</a>
-                    <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="bg-gradient-to-r from-red-500 to-pink-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@kakiha_sousuke</a>
-                    <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@hiraso_jp</a>
-                </div>
-            </div>
-        </div>
-    </section>    <footer class="bg-gray-800 text-white py-8 mt-16">
-        <div class="container mx-auto px-4 text-center">
-            <p>© 2025 Sousuke Hirai. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <p class="thin-text">© 2025 Sousuke Hirai. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !contact || !message) {
+                alert('すべての必須項目を入力してください。');
+                return;
+            }
+            
+            // 件名と本文を作成（文字化け対策）
+            const subject = '講演のお問い合わせ - ' + name + '様より';
+            const body = 'お名前: ' + name + '\n' +
+                        '連絡先: ' + contact + '\n\n' +
+                        'お問い合わせ内容:\n' + message + '\n\n' +
+                        '---\n' +
+                        'このメールは平井宗助の活動紹介サイトから送信されました。';
+            
+            // UTF-8エンコーディングでmailtoリンクを作成（CCで自分宛にも送信）
+            const mailtoLink = 'mailto:info@kakiha.net?cc=' + 
+                             encodeURIComponent(contact) + 
+                             '&subject=' + 
+                             encodeURIComponent(subject) + 
+                             '&body=' + 
+                             encodeURIComponent(body);
+            
+            // メールアプリを開く
+            window.location.href = mailtoLink;
+            
+            // フォームをクリア
+            document.getElementById('contactForm').reset();
+            
+            // 送信完了メッセージを表示
+            setTimeout(function() {
+                alert('メールアプリを開きました。\n内容をご確認の上、送信してください。\n\nご自身にもコピーが送信されます。\nフォームは自動的にクリアされました。');
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
-EOF < /dev/null

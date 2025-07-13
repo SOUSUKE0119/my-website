@@ -7,15 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Noto Sans JP', sans-serif; }
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        * { font-family: 'Inter', sans-serif; font-weight: 300; }
+        .thin-text { font-weight: 200; }
+        .normal-text { font-weight: 300; }
+        .medium-text { font-weight: 400; }
+        .semi-bold-text { font-weight: 500; }
         .timeline-item {
             position: relative;
             padding-left: 2rem;
@@ -25,179 +23,180 @@
             position: absolute;
             left: 0;
             top: 0.5rem;
-            width: 0.75rem;
-            height: 0.75rem;
-            background: #3B82F6;
+            width: 0.5rem;
+            height: 0.5rem;
+            background: #6B7280;
             border-radius: 50%;
         }
         .timeline-item:not(:last-child)::after {
             content: '';
             position: absolute;
-            left: 0.375rem;
-            top: 1.25rem;
-            width: 2px;
-            height: calc(100% - 1rem);
+            left: 0.1875rem;
+            top: 1rem;
+            width: 1px;
+            height: calc(100% - 0.5rem);
             background: #E5E7EB;
         }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-gray-50 text-gray-800 normal-text min-h-screen">
     
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4">
+        <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="text-blue-600 hover:text-blue-800 transition-colors">← 活動紹介に戻る</a>
-                <h1 class="text-2xl font-bold gradient-text">詳細プロフィール</h1>
+                <a href="index.html" class="text-gray-600 hover:text-gray-800 transition-colors text-sm">← ホームに戻る</a>
+                <h1 class="text-xl medium-text text-gray-900">詳細プロフィール</h1>
                 <div></div>
             </div>
         </div>
     </nav>
 
-    <main class="container mx-auto px-4 py-12">
+    <main class="container mx-auto px-6 py-16">
         <div class="max-w-4xl mx-auto">
             
-            <div class="text-center mb-16">
-                <div class="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mx-auto mb-6 flex items-center justify-center text-white text-4xl">
-                    平井
+            <!-- Profile Header -->
+            <div class="text-center mb-20">
+                <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-8 flex items-center justify-center border border-gray-300 overflow-hidden">
+                    <img src="images/505529836_24041857855455031_355995881674575500_n.jpg" alt="平井宗助" class="w-full h-full object-cover">
                 </div>
-                <h1 class="text-4xl font-bold gradient-text mb-4">平井宗助</h1>
-                <p class="text-xl text-gray-600">SOUSUKE HIRAI</p>
-                <p class="text-gray-500 mt-2">昭和46年（1971年）奈良県吉野郡吉野町生まれ</p>
+                <h1 class="text-3xl medium-text text-gray-900 mb-4">平井宗助</h1>
+                <p class="text-sm thin-text text-gray-500 mb-2">SOUSUKE HIRAI</p>
+                <p class="text-sm text-gray-400">昭和46年（1971年）奈良県吉野郡吉野町生まれ</p>
             </div>
 
-            
-            <section class="mb-16">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-500 pl-4">経歴</h2>
-                <div class="bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="space-y-6">
+            <!-- Career Timeline -->
+            <section class="mb-20">
+                <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-12">経歴</h2>
+                <div class="bg-white rounded-lg border border-gray-200 p-8">
+                    <div class="space-y-8">
                         <div class="timeline-item">
-                            <div class="font-semibold text-blue-600">昭和46年</div>
-                            <div class="text-gray-700">奈良県吉野郡吉野町に生まれる</div>
-                            <div class="text-sm text-gray-500 mt-1">椿井小学校・清風学園高校を経て</div>
+                            <div class="text-sm medium-text text-gray-700">昭和46年</div>
+                            <div class="text-gray-600 thin-text">奈良県吉野郡吉野町に生まれる</div>
+                            <div class="text-xs text-gray-400 mt-1">椿井小学校・清風学園高校を経て</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="font-semibold text-blue-600">平成7年</div>
-                            <div class="text-gray-700">慶應義塾大学商学部卒業</div>
+                            <div class="text-sm medium-text text-gray-700">平成7年</div>
+                            <div class="text-gray-600 thin-text">慶應義塾大学商学部卒業</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="font-semibold text-blue-600">平成7年</div>
-                            <div class="text-gray-700">株式会社パレスホテル 入社</div>
+                            <div class="text-sm medium-text text-gray-700">平成7年</div>
+                            <div class="text-gray-600 thin-text">株式会社パレスホテル 入社</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="font-semibold text-blue-600">平成9年</div>
-                            <div class="text-gray-700">株式会社柿の葉ずし 入社</div>
+                            <div class="text-sm medium-text text-gray-700">平成9年</div>
+                            <div class="text-gray-600 thin-text">株式会社柿の葉ずし 入社</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="font-semibold text-blue-600">平成16年</div>
-                            <div class="text-gray-700">（社）奈良青年会議所 入会（平成23年卒業）</div>
+                            <div class="text-sm medium-text text-gray-700">平成16年</div>
+                            <div class="text-gray-600 thin-text">（社）奈良青年会議所 入会（平成23年卒業）</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="font-semibold text-blue-600">平成23年</div>
-                            <div class="text-gray-700">株式会社柿の葉ずし 代表取締役</div>
+                            <div class="text-sm medium-text text-gray-700">平成23年</div>
+                            <div class="text-gray-600 thin-text">株式会社柿の葉ずし 代表取締役</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="font-semibold text-blue-600">平成27年</div>
-                            <div class="text-gray-700">合同会社ほうせき箱 設立（代表社員として現在に至る）</div>
+                            <div class="text-sm medium-text text-gray-700">平成27年</div>
+                            <div class="text-gray-600 thin-text">合同会社ほうせき箱 設立（代表社員として現在に至る）</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="font-semibold text-blue-600">平成29年</div>
-                            <div class="text-gray-700">株式会社柿の葉ずし 退職</div>
+                            <div class="text-sm medium-text text-gray-700">平成29年</div>
+                            <div class="text-gray-600 thin-text">株式会社柿の葉ずし 退職</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="font-semibold text-blue-600">令和4年</div>
-                            <div class="text-gray-700">奈良餅飯殿センター街協同組合 副理事長</div>
+                            <div class="text-sm medium-text text-gray-700">令和4年</div>
+                            <div class="text-gray-600 thin-text">奈良餅飯殿センター街協同組合 副理事長</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="font-semibold text-blue-600">令和6年</div>
-                            <div class="text-gray-700">株式会社柿の葉ずし 復職（現在 専務取締役）</div>
+                            <div class="text-sm medium-text text-gray-700">令和6年</div>
+                            <div class="text-gray-600 thin-text">株式会社柿の葉ずし 復職（現在 専務取締役）</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            
-            <section class="mb-16">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-green-500 pl-4">観光事業ボランティア経歴</h2>
-                <div class="bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="space-y-4">
-                            <div class="p-4 bg-green-50 rounded-lg">
-                                <div class="font-semibold text-green-600">平成16年～17年</div>
-                                <div class="text-gray-700">NPO法人なら燈花会実行委員会</div>
+            <!-- Volunteer Experience -->
+            <section class="mb-20">
+                <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-12">観光事業ボランティア経歴</h2>
+                <div class="bg-white rounded-lg border border-gray-200 p-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                <div class="text-sm medium-text text-gray-700">平成16年～17年</div>
+                                <div class="text-gray-600 thin-text"><a href="https://www.toukae.jp/" target="_blank" class="text-gray-600 hover:text-gray-800 underline">NPO法人なら燈花会実行委員会</a></div>
                             </div>
-                            <div class="p-4 bg-blue-50 rounded-lg">
-                                <div class="font-semibold text-blue-600">平成19年～22年</div>
-                                <div class="text-gray-700">平城遷都祭実行委員会</div>
+                            <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                <div class="text-sm medium-text text-gray-700">平成19年～22年</div>
+                                <div class="text-gray-600 thin-text">平城遷都祭実行委員会</div>
                             </div>
-                            <div class="p-4 bg-purple-50 rounded-lg">
-                                <div class="font-semibold text-purple-600">平成21年～27年</div>
-                                <div class="text-gray-700">NPO法人なら国際映画祭実行委員会</div>
+                            <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                <div class="text-sm medium-text text-gray-700">平成21年～27年</div>
+                                <div class="text-gray-600 thin-text"><a href="https://nara-iff.jp/" target="_blank" class="text-gray-600 hover:text-gray-800 underline">NPO法人なら国際映画祭実行委員会</a></div>
                             </div>
                         </div>
-                        <div class="space-y-4">
-                            <div class="p-4 bg-indigo-50 rounded-lg">
-                                <div class="font-semibold text-indigo-600">平成21年～27年</div>
-                                <div class="text-gray-700">なら瑠璃絵実行委員会</div>
+                        <div class="space-y-6">
+                            <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                <div class="text-sm medium-text text-gray-700">平成21年～27年</div>
+                                <div class="text-gray-600 thin-text"><a href="https://rurie.jp/" target="_blank" class="text-gray-600 hover:text-gray-800 underline">なら瑠璃絵実行委員会</a></div>
                             </div>
-                            <div class="p-4 bg-cyan-50 rounded-lg">
-                                <div class="font-semibold text-cyan-600">平成26年～現在</div>
-                                <div class="text-gray-700">ひむろしらゆき祭実行委員会</div>
+                            <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                <div class="text-sm medium-text text-gray-700">平成26年～現在</div>
+                                <div class="text-gray-600 thin-text"><a href="https://himuroshirayuki.com/" target="_blank" class="text-gray-600 hover:text-gray-800 underline">ひむろしらゆき祭実行委員会</a></div>
                             </div>
-                            <div class="p-4 bg-orange-50 rounded-lg">
-                                <div class="font-semibold text-orange-600">平成27年～現在</div>
-                                <div class="text-gray-700">奈良かき氷ガイド制作委員会</div>
+                            <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                <div class="text-sm medium-text text-gray-700">平成27年～現在</div>
+                                <div class="text-gray-600 thin-text"><a href="https://nara-kakigori.com/" target="_blank" class="text-gray-600 hover:text-gray-800 underline">奈良かき氷ガイド制作委員会</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            
-            <section class="mb-16">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-orange-500 pl-4">合同会社ほうせき箱について</h2>
-                <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-8 shadow-lg">
-                    <div class="space-y-6">
-                        <div class="bg-white rounded-lg p-6">
-                            <h3 class="text-xl font-bold text-orange-600 mb-3">設立・店舗展開</h3>
-                            <p class="text-gray-700 leading-relaxed">
+            <!-- Housekibako Company -->
+            <section class="mb-20">
+                <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-12">合同会社ほうせき箱について</h2>
+                <div class="bg-white rounded-lg border border-gray-200 p-8">
+                    <div class="space-y-8">
+                        <div class="border-l-2 border-gray-300 pl-6">
+                            <h3 class="text-lg medium-text text-gray-800 mb-4">設立・店舗展開</h3>
+                            <p class="text-gray-600 thin-text leading-relaxed text-sm">
                                 2015年2月設立。かき氷を中心とした喫茶営業を行う会社として、平井宗助・岡田桂子を共同代表として同年3月「こおりとお茶のお店ほうせき箱」を奈良もちいどのセンター街にオープン（5坪 カウンター13席）。2018年3月、同商店街内に移転（30坪36席）。夏だけの食文化であったかき氷を通年で楽しめる商材として進化させ、真冬も賑わうお店に。
                             </p>
                         </div>
                         
-                        <div class="bg-white rounded-lg p-6">
-                            <h3 class="text-xl font-bold text-green-600 mb-3">柿の葉加工事業</h3>
-                            <p class="text-gray-700 leading-relaxed">
+                        <div class="border-l-2 border-gray-300 pl-6">
+                            <h3 class="text-lg medium-text text-gray-800 mb-4">柿の葉加工事業</h3>
+                            <p class="text-gray-600 thin-text leading-relaxed text-sm">
                                 2017年柿葉の持つ健康機能性に注目し「柿の葉加工事業」を立ち上げ。約0.7ha（7000㎡）の柿葉園を管理し、柿葉の栽培、加工（お茶・調味料・入浴剤等）、販売を行う。2022年4月「柿の葉茶専門店SOUSUKE」を奈良公園バスターミナル内にオープン。
-                        <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="block text-red-600 hover:text-red-800 underline">
-                        </a>                            </p>
+                            </p>
                         </div>
 
-                        <div class="bg-white rounded-lg p-6">
-                            <h3 class="text-xl font-bold text-blue-600 mb-3">国内外での展開</h3>
-                            <div class="space-y-3 text-gray-700">
+                        <div class="border-l-2 border-gray-300 pl-6">
+                            <h3 class="text-lg medium-text text-gray-800 mb-4">国内外での展開</h3>
+                            <div class="space-y-3 text-gray-600 thin-text text-sm">
                                 <p>• 2023年12月〜2024年1月：ONITSUKA TIGER銀座POP UP STOREにてかき氷提供のCAFE75をコラボで運営</p>
-                                <p>• 2024年5月：ベルリン(Tenzan Lab)・ミュンヘン(Tohru in der Schreiberei)にてドイツの飲食関連事業者及びメディアに向けkakigoriワークショップ及びkakigori提供</p>
+                                <p>• 2024年5月：ベルリン(Tenzan Lab)・ミュンヘン(Tohru in der Schreiberei　2025年ミシュラン三つ星獲得！)にてドイツの飲食関連事業者及びメディアに向けkakigoriワークショップ及びkakigori提供</p>
                                 <p>• 2025年1月：サウジアラビアの人気カフェ「大川」にてkakigoriの技術提供</p>
-                                <p>• 2025年5月：大阪・関西万博にて「ALL NARA FESTIVAL」に登壇 柿の葉ずし/かき氷について講演予定</p>
-                                <p>• 2025年6月：PRADAのイベント「PRADA mode osaka」に出店予定</p>
+                                <p>• 2025年5月：大阪・関西万博にて「ALL NARA FESTIVAL」に登壇 柿の葉ずし/かき氷について講演</p>
+                                <p>• 2025年6月：PRADAのイベント「PRADA mode osaka」VIPレセプションに参加出店</p>
+                                <p>• 2025年12月：ROUND ONE USAの新業態<a href="https://www.round1.co.jp/round1usa_jpfoodhall/index.html" target="_blank" class="text-gray-700 hover:text-gray-900 underline">ジャパニーズフードホール</a>（1店舗目はロサンジェルス近郊）に出店予定</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            
-            <section class="mb-16">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-red-500 pl-4">総本家平宗について</h2>
-                <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-8 shadow-lg">
-                    <div class="bg-white rounded-lg p-6">
-                        <h3 class="text-xl font-bold text-red-600 mb-4">文久元年（1861年）創業</h3>
-                        <p class="text-gray-700 leading-relaxed mb-4">
+            <!-- Hiraso Company -->
+            <section class="mb-20">
+                <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-12">総本家平宗について</h2>
+                <div class="bg-white rounded-lg border border-gray-200 p-8">
+                    <div class="border-l-2 border-gray-300 pl-6">
+                        <h3 class="text-lg medium-text text-gray-800 mb-4">文久元年（1861年）創業</h3>
+                        <p class="text-gray-600 thin-text leading-relaxed text-sm mb-6">
                             平宗という屋号で、大和上市にて平井宗八が川魚や乾物を扱う商いを始める。その後料理屋、旅館を経て現在は柿の葉ずしの製造販売および飲食店を中心とした事業に。
                         </p>
-                        <div class="bg-red-50 rounded-lg p-4">
-                            <h4 class="font-semibold text-red-700 mb-2">現在の事業規模</h4>
-                            <ul class="text-gray-700 space-y-1">
+                        <div class="bg-gray-50 rounded border border-gray-200 p-4">
+                            <h4 class="text-sm medium-text text-gray-700 mb-3">現在の事業規模</h4>
+                            <ul class="text-gray-600 thin-text space-y-1 text-sm">
                                 <li>• 県内外に直営店14店舗</li>
                                 <li>• ECサイトの運営</li>
                                 <li>• 通信販売事業</li>
@@ -207,185 +206,79 @@
                 </div>
             </section>
 
-            
-            <div class="text-center space-y-4">
-                <a href="contact-form.html" class="inline-block bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-medium transition-colors mr-4">
-                    講演のご依頼
-                </a>
-                <a href="index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
-                    活動紹介ページに戻る
-                </a>
-                <div class="flex justify-center space-x-4">
-                    <a href="https://note.com/a_rimbaud" target="_blank" class="text-orange-600 hover:text-orange-800 underline">note</a>
-                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="text-pink-600 hover:text-pink-800 underline">Instagram</a>
-                    <a href="https://sousuke-kakiha.com" target="_blank" class="text-green-600 hover:text-green-800 underline">柿の葉茶専門店SOUSUKE</a>
-                        <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="block text-red-600 hover:text-red-800 underline">
-                        </a>                </div>
+            <!-- Media Coverage -->
+            <section class="mb-20">
+                <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-12">メディア掲載・取材記事</h2>
+                <div class="bg-white rounded-lg border border-gray-200 p-8">
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-gray-300 pl-6">
+                            <h3 class="text-lg medium-text text-gray-800 mb-4">取材記事</h3>
+                            <div class="space-y-4">
+                                <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                    <a href="https://par-ple.jp/pages/article_detail.php?report_no=6828&app_no=39&tab_no=0" target="_blank" class="text-gray-700 hover:text-gray-900 underline text-sm medium-text">
+                                        PAR-PLE（パープル）- 平井宗助取材記事
+                                    </a>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                    <a href="https://nara-tabikura.jp/1559/" target="_blank" class="text-gray-700 hover:text-gray-900 underline text-sm medium-text">
+                                        奈良旅暮 - 平井宗助取材記事
+                                    </a>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                    <a href="https://nativ.media/6836/" target="_blank" class="text-gray-700 hover:text-gray-900 underline text-sm medium-text">
+                                        NATIV.MEDIA - 平井宗助取材記事
+                                    </a>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                    <a href="https://nativ.media/5960/" target="_blank" class="text-gray-700 hover:text-gray-900 underline text-sm medium-text">
+                                        NATIV.MEDIA - 関連記事
+                                    </a>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                    <a href="https://harenohi.asahigroup-japan.co.jp/series/4-5/" target="_blank" class="text-gray-700 hover:text-gray-900 underline text-sm medium-text">
+                                        晴れの日 - アサヒグループ掲載記事
+                                    </a>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                    <a href="https://www.youtube.com/watch?v=q_E7UaC7kis" target="_blank" class="text-gray-700 hover:text-gray-900 underline text-sm medium-text">
+                                        YouTube - 堂本剛がかき氷を堪能！IN 奈良
+                                    </a>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                                    <a href="https://www.tv-tokyo.co.jp/plus/lifestyle/entry/202409/15656.html" target="_blank" class="text-gray-700 hover:text-gray-900 underline text-sm medium-text">
+                                        テレビ東京 - 世界！ニッポン行きたい人応援団
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <div class="text-center space-y-6">
+                <div class="flex justify-center space-x-4 flex-wrap">
+                    <a href="contact-form.html" class="inline-flex items-center px-6 py-2 bg-gray-700 hover:bg-gray-800 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                        講演のご依頼
+                    </a>
+                    <a href="index.html" class="inline-flex items-center px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                        ホームに戻る
+                    </a>
+                </div>
+                <div class="flex justify-center space-x-6 text-sm">
+                    <a href="https://note.com/a_rimbaud" target="_blank" class="text-gray-600 hover:text-gray-800 transition-colors">Note</a>
+                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="text-gray-600 hover:text-gray-800 transition-colors">Instagram</a>
+                    <a href="https://sousuke-kakiha.com" target="_blank" class="text-gray-600 hover:text-gray-800 transition-colors">柿の葉茶専門店SOUSUKE</a>
+                </div>
             </div>
         </div>
     </main>
 
-    <!-- Instagram Latest Posts -->
-    <section class="py-16 bg-gradient-to-br from-pink-50 to-purple-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Instagram 最新投稿</h2>
-            <div class="flex overflow-x-auto space-x-6 pb-4">
-                <!-- ほうせき箱 Instagram -->
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
-                    <a href="https://www.instagram.com/housekibaco/" target="_blank" class="block">
-                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
-                            <img src="IMG_1769.JPG" alt="ほうせき箱の最新かき氷" class="instagram-image" loading="lazy">
-                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
-                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                                Live
-                            </div>
-                            <div class="absolute bottom-4 left-4 right-4 text-white">
-                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
-                                    <h4 class="font-bold text-sm">ほうせき箱</h4>
-                                    <p class="text-xs opacity-90">@housekibaco</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white text-xs">🍧</div>
-                                    <div>
-                                        <h3 class="font-bold text-gray-800 text-sm">ほうせき箱</h3>
-                                        <p class="text-xs text-gray-500">2時間前</p>
-                                    </div>
-                                </div>
-                                <div class="text-pink-500">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-600">本日のスペシャルかき氷✨</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- 鹿活 Instagram -->
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
-                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="block">
-                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
-                            <img src="DSC08803.jpg" alt="奈良公園の鹿" class="instagram-image" loading="lazy">
-                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
-                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                                Live
-                            </div>
-                            <div class="absolute bottom-4 left-4 right-4 text-white">
-                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
-                                    <h4 class="font-bold text-sm">奈良鹿活</h4>
-                                    <p class="text-xs opacity-90">@lovenaradeer</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-600 rounded-full flex items-center justify-center text-white text-xs">🦌</div>
-                                    <div>
-                                        <h3 class="font-bold text-gray-800 text-sm">Love Nara Deer</h3>
-                                        <p class="text-xs text-gray-500">5時間前</p>
-                                    </div>
-                                </div>
-                                <div class="text-pink-500">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-600">奈良公園の美しい夕暮れ時🦌</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- 柿の葉加工事業 Instagram -->
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
-                    <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="block">
-                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
-                            <img src="DSC04887.jpg" alt="柿の葉" class="instagram-image" loading="lazy">
-                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
-                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                                Live
-                            </div>
-                            <div class="absolute bottom-4 left-4 right-4 text-white">
-                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
-                                    <h4 class="font-bold text-sm">柿の葉加工事業</h4>
-                                    <p class="text-xs opacity-90">@kakiha_sousuke</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-red-400 to-pink-600 rounded-full flex items-center justify-center text-white text-xs">🍃</div>
-                                    <div>
-                                        <h3 class="font-bold text-gray-800 text-sm">柿の葉茶専門店SOUSUKE</h3>
-                                        <p class="text-xs text-gray-500">1日前</p>
-                                    </div>
-                                </div>
-                                <div class="text-pink-500">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-600">新鮮な柿の葉を収穫🍃</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- 平宗 Instagram -->
-                <div class="flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow w-80 instagram-card">
-                    <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="block">
-                        <div class="w-full h-80 bg-gray-200 relative overflow-hidden">
-                            <img src="kakinohazushi.jpg" alt="柿の葉ずし" class="instagram-image" loading="lazy">
-                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm flex items-center">
-                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                                Live
-                            </div>
-                            <div class="absolute bottom-4 left-4 right-4 text-white">
-                                <div class="bg-black/50 backdrop-blur-sm rounded-lg p-3">
-                                    <h4 class="font-bold text-sm">平宗</h4>
-                                    <p class="text-xs opacity-90">@hiraso_jp</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center text-white text-xs">🍱</div>
-                                    <div>
-                                        <h3 class="font-bold text-gray-800 text-sm">総本家平宗</h3>
-                                        <p class="text-xs text-gray-500">3時間前</p>
-                                    </div>
-                                </div>
-                                <div class="text-pink-500">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-600">伝統の柿の葉ずし🍱</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="text-center mt-8">
-                <p class="text-gray-600 mb-4">最新の活動をInstagramでチェック！</p>
-                <div class="flex justify-center space-x-4 flex-wrap">
-                    <a href="https://www.instagram.com/housekibaco/" target="_blank" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@housekibaco</a>
-                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="bg-gradient-to-r from-pink-500 to-orange-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@lovenaradeer</a>
-                    <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="bg-gradient-to-r from-red-500 to-pink-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@kakiha_sousuke</a>
-                    <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all mb-2">@hiraso_jp</a>
-                </div>
-            </div>
-        </div>
-    </section>    <footer class="bg-gray-800 text-white py-8 mt-16">
-        <div class="container mx-auto px-4 text-center">
-            <p>© 2025 Sousuke Hirai. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <p class="thin-text">© 2025 Sousuke Hirai. All rights reserved.</p>
         </div>
     </footer>
 </body>
 </html>
-EOF < /dev/null
