@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- メインページ -->
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- 詳細プロフィールページ -->
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/profile.html</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 講演のご依頼ページ -->
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/contact-form.html</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 主要画像ファイル -->
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/505529836_24041857855455031_355995881674575500_n.jpg</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/IMG_1769.JPG</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/kakinohazushi.jpg</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/DSC08803.jpg</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/shotengai.jpg</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/DSC04887.jpg</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <!-- Instagram画像ファイル -->
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/images/housekibaco.png</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/images/lovenaradeer.png</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/images/sousuke.png</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://sousuke0119.github.io/my-website/images/hiraso.png</loc>
+        <lastmod>2025-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+</urlset>

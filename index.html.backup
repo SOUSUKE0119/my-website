@@ -7,81 +7,73 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
-            font-weight: 300;
-            line-height: 1.6;
-            color: #4a5568;
-        }
-        
-        .text-minimal {
-            color: #718096;
-        }
-        
-        .bg-minimal {
-            background-color: #f7fafc;
-        }
-        
-        .border-minimal {
-            border-color: #e2e8f0;
-        }
+        * { font-family: 'Inter', sans-serif; font-weight: 300; }
+        .thin-text { font-weight: 200; }
+        .normal-text { font-weight: 300; }
+        .medium-text { font-weight: 400; }
+        .semi-bold-text { font-weight: 500; }
     </style>
 </head>
-<body class="bg-white">
-    
-    <header class="py-20 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="mb-12">
+<body class="bg-gray-50 text-gray-800 normal-text">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8">
                 <img src="505529836_24041857855455031_355995881674575500_n.jpg" 
-                     alt="平井宗助" 
-                     class="w-24 h-24 rounded-full mx-auto mb-8 object-cover border border-gray-200">
+                     alt="平井宗助のプロフィール写真" 
+                     class="w-24 h-24 rounded-full mx-auto mb-6 border border-gray-300 object-cover">
             </div>
-            <h1 class="text-4xl font-extralight text-gray-800 mb-4 tracking-wide">平井宗助</h1>
-            <p class="text-sm font-light text-gray-500 mb-8 tracking-wider">SOUSUKE HIRAI</p>
-            <p class="text-base text-gray-600 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-                奈良を拠点に、かき氷・柿の葉ずし・鹿活・商店街活性化・柿の葉加工事業を通じて<br>
-                地域文化の継承と発展に取り組んでいます
+            <h1 class="text-4xl semi-bold-text text-gray-900 mb-6">SOUSUKE</h1>
+            <div class="mb-6">
+                <span class="text-lg normal-text text-gray-600">わくわくする奈良に囲まれて仕事をしています</span>
+            </div>
+            <p class="text-base thin-text text-gray-500 max-w-2xl mx-auto leading-relaxed mb-8">
+                始まりと今がつながる場所で　大好きなモノやコトをつくりたい<br>
+                <span class="normal-text text-gray-700">KAKIGORI</span> ・ <span class="normal-text text-gray-700">柿の葉ずし</span> ・ <span class="normal-text text-gray-700">柿の葉</span> ・ <span class="normal-text text-gray-700">鹿活</span> ・ <span class="normal-text text-gray-700">商店街</span>
             </p>
-            <div class="flex justify-center space-x-6">
-                <a href="profile.html" class="text-sm text-gray-600 hover:text-gray-800 font-light border-b border-gray-300 hover:border-gray-600 transition-all pb-1">
-                    プロフィール
+            <div class="flex justify-center space-x-4 flex-wrap">
+                <a href="https://note.com/a_rimbaud" target="_blank" class="inline-flex items-center px-6 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                    note
                 </a>
-                <a href="contact-form.html" class="text-sm text-gray-600 hover:text-gray-800 font-light border-b border-gray-300 hover:border-gray-600 transition-all pb-1">
-                    お問い合わせ
+                <a href="https://voicy.jp/channel/2433" target="_blank" class="inline-flex items-center px-6 py-2 bg-gray-700 hover:bg-gray-800 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                    voicy
                 </a>
-                <a href="https://note.com/a_rimbaud" target="_blank" class="text-sm text-gray-600 hover:text-gray-800 font-light border-b border-gray-300 hover:border-gray-600 transition-all pb-1">
-                    Note
+                <a href="https://www.facebook.com/hiraisousuke?locale=ja_JP" target="_blank" class="inline-flex items-center px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                    facebook
+                </a>
+                <a href="profile.html" class="inline-flex items-center px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                    詳細プロフィール
+                </a>
+                <a href="contact-form.html" class="inline-flex items-center px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                    講演のご依頼
                 </a>
             </div>
         </div>
     </header>
 
-    
-    <main class="max-w-6xl mx-auto px-6 py-16">
-        
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16">
+        <!-- かき氷セクション -->
         <section class="mb-20">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
                 <div>
-                    <h2 class="text-2xl font-light text-gray-800 mb-6 tracking-wide">KAKIGORI</h2>
-                    <p class="text-sm text-gray-600 mb-8 font-light leading-relaxed">
-                        奈良の夏の風物詩であるかき氷文化を愛し、その魅力を発信する活動を行っています。
-                        老舗から新店まで、奈良県内の素晴らしいかき氷店を巡り、その美味しさと職人の技を紹介。
-                        また、地域のかき氷イベントにも積極的に参加し、奈良のかき氷文化の継承と発展に貢献しています。
+                    <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6">KAKIGORI</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed thin-text">
+                        2015年開業の『kakigori ほうせき箱』は、奈良食材を活かし"一年中儚い口どけ"のかき氷を追求。現在も来客が絶えず、国内外のファンを魅了しています。14年、氷室神社と『ひむろしらゆき祭』を立ち上げ、献氷祭前の恒例行事として定着。15年から毎年制作する『奈良かき氷ガイド』で奈良県内の個性豊かな一杯を紹介し、かき氷で奈良を巡る仕組みを構築。店舗・祭り・ガイドの三本柱で、奈良のかき氷文化が五十年、百年先も続くよう、活動を続けています。
                     </p>
-                    <div class="space-y-3">
-                        <a href="https://www.instagram.com/housekibaco/" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                    <div class="space-y-2 mb-8">
+                        <a href="https://www.instagram.com/housekibaco/" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             ほうせき箱（Instagram）
                         </a>
-                        <a href="https://maps.google.com/?q=奈良県奈良市餅飯殿町47" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                        <a href="https://maps.google.com/?q=奈良県奈良市餅飯殿町47" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             ほうせき箱（Google マップ）
                         </a>
-                        <a href="https://himuroshirayuki.com" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                        <a href="https://himuroshirayuki.com" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             ひむろしらゆき祭
                         </a>
-                        <a href="https://nara-kakigori.com" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                        <a href="https://nara-kakigori.com" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             奈良かき氷ガイド
                         </a>
                     </div>
@@ -89,35 +81,32 @@
                 <div>
                     <img src="IMG_1769.JPG" 
                          alt="美しく盛られたかき氷" 
-                         class="w-full h-80 object-cover border border-gray-200">
+                         class="w-full h-64 object-cover border border-gray-200">
                 </div>
             </div>
         </section>
 
-        
+        <!-- 柿の葉ずしセクション -->
         <section class="mb-20">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
                 <div class="order-2 md:order-1">
                     <img src="kakinohazushi.jpg" 
                          alt="伝統的な柿の葉ずし" 
-                         class="w-full h-80 object-cover border border-gray-200">
+                         class="w-full h-64 object-cover border border-gray-200">
                 </div>
                 <div class="order-1 md:order-2">
-                    <h2 class="text-2xl font-light text-gray-800 mb-6 tracking-wide">柿の葉ずし</h2>
-                    <p class="text-sm text-gray-600 mb-8 font-light leading-relaxed">
-                        奈良県の郷土料理である柿の葉ずしの素晴らしさを伝える活動をしています。
-                        特に老舗「平宗」の伝統的な製法と味わいに深い敬意を抱き、
-                        この歴史ある食文化を次世代に継承していく重要性を発信。
-                        柿の葉ずしの背景にある奈良の歴史と文化の豊かさもあわせて紹介しています。
+                    <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6">柿の葉ずし</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed thin-text">
+                        奈良の郷土料理・柿の葉ずしの魅力を次世代へ伝えるため、歴史的・文化的価値を積極的に発信しています。手作り体験や講演を通じて、"包む"という優しい文化、柿の葉の抗菌・保存性、そして歌舞伎『義経千本桜』を通じて語られる鮎のなれ寿司の物語など、多面的な魅力を紹介。伝統を大切にしながら新しい商品開発にも積極的に挑戦し、自社ブランドにとどまらず柿の葉ずし文化全体の発展と継承を目指し、お客様にその奥深さと楽しさを届けています。
                     </p>
-                    <div class="space-y-3">
-                        <a href="https://hiraso.jp" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                    <div class="space-y-2">
+                        <a href="https://hiraso.jp" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             平宗（老舗柿の葉ずし店）
                         </a>
-                        <a href="https://maps.google.com/?q=奈良県奈良市今御門町30-1" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                        <a href="https://maps.google.com/?q=奈良県奈良市今御門町30-1" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             平宗 奈良店（Google マップ）
                         </a>
-                        <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                        <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             Instagram @hiraso_jp
                         </a>
                     </div>
@@ -125,22 +114,19 @@
             </div>
         </section>
 
-        
+        <!-- 鹿活セクション -->
         <section class="mb-20">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
                 <div>
-                    <h2 class="text-2xl font-light text-gray-800 mb-6 tracking-wide">鹿活</h2>
-                    <p class="text-sm text-gray-600 mb-8 font-light leading-relaxed">
-                        奈良公園の愛らしい鹿たちの魅力を写真で切り取る活動を行っています。
-                        「鹿活」として親しまれる鹿の写真撮影を通じて、
-                        奈良のシンボルである鹿たちの日常の美しさや表情の豊かさを発信。
-                        観光客だけでなく地元の方々にも、身近にいる鹿たちの新たな魅力を再発見していただけるよう活動しています。
+                    <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6">鹿活</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed thin-text">
+                        季節ごとに移ろう奈良公園の風景とともに鹿たちの姿を写真に収めています。彼らを取り巻く環境が年々変化する中でも、神の使いとされる鹿が安心して暮らせる場所を未来へ残したい──その想いで、朝のまばゆい光の中で春の桜、夏の青葉、秋の紅葉、冬の雪景色に溶け込む鹿の生態を丁寧に記録。写真を通じて、鹿と人がこれからも平和に共生できるよう願いながら、その尊さと四季折々の美しさを広く紹介しています。
                     </p>
-                    <div class="space-y-3">
-                        <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                    <div class="space-y-2">
+                        <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             @lovenaradeer（Instagram）
                         </a>
-                        <a href="https://maps.google.com/?q=奈良公園" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                        <a href="https://maps.google.com/?q=奈良公園" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             奈良公園（Google マップ）
                         </a>
                     </div>
@@ -148,32 +134,32 @@
                 <div>
                     <img src="DSC08803.jpg" 
                          alt="奈良公園の美しい鹿" 
-                         class="w-full h-80 object-cover border border-gray-200">
+                         class="w-full h-64 object-cover border border-gray-200">
                 </div>
             </div>
         </section>
 
-        
+        <!-- 商店街活性化セクション -->
         <section class="mb-20">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
                 <div class="order-2 md:order-1">
                     <img src="shotengai.jpg" 
                          alt="活気ある商店街の風景" 
-                         class="w-full h-80 object-cover border border-gray-200">
+                         class="w-full h-64 object-cover border border-gray-200">
                 </div>
                 <div class="order-1 md:order-2">
-                    <h2 class="text-2xl font-light text-gray-800 mb-6 tracking-wide">商店街活性化</h2>
-                    <p class="text-sm text-gray-600 mb-8 font-light leading-relaxed">
-                        奈良の歴史ある商店街の活性化に取り組む「餅飯殿 NEXT＋（仮）」プロジェクトを推進しています。
-                        地域の伝統と現代のニーズを融合させ、若い世代にも魅力的な商店街づくりを目指しています。
-                        地元商店主の方々との協力のもと、新しいイベントや取り組みを企画し、
-                        地域コミュニティの結びつきを強化する活動を展開中です。
+                    <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6">商店街活性化</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed thin-text">
+                        奈良の歴史ある商店街「奈良もちいどのセンター街」を未来に向けてリニューアルする起爆剤として「餅飯殿NEXT＋（仮）」プロジェクトに取り組んでいます。2007年の「もちいどの夢CUBE」開設以来、「ほうせき箱」をはじめ、伝統的な商業の枠組みを超えた革新的な店舗が生まれ、商店街の新たな魅力を創造してきました。2026年開業予定の「餅飯殿NEXT＋」では、地域の伝統を大切にしながら現代の課題に向き合い、商店街の外にも拡がっていく、今までにない商売やコミュニティーが生まれるチャンスを創出します。
                     </p>
-                    <div class="space-y-3">
-                        <span class="block text-xs text-gray-500 font-light">
+                    <div class="space-y-2">
+                        <a href="https://www.mochiidono.com/event102.html" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             餅飯殿 NEXT＋（仮）プロジェクト進行中
-                        </span>
-                        <a href="https://maps.google.com/?q=奈良県奈良市餅飯殿町" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                        </a>
+                        <a href="https://www.mochiidono.com/" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            奈良もちいどのセンター街
+                        </a>
+                        <a href="https://maps.google.com/?q=奈良県奈良市餅飯殿町" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             餅飯殿商店街（Google マップ）
                         </a>
                     </div>
@@ -181,26 +167,22 @@
             </div>
         </section>
 
-        
+        <!-- 柿の葉加工事業セクション -->
         <section class="mb-20">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
                 <div>
-                    <h2 class="text-2xl font-light text-gray-800 mb-6 tracking-wide">柿の葉加工事業</h2>
-                    <p class="text-sm text-gray-600 mb-8 font-light leading-relaxed">
-                        奈良の豊かな自然の恵みである柿の葉を活用した事業を展開しています。
-                        「柿の葉茶専門店SOUSUKE by ほうせき箱」では、厳選された柿の葉から作られる
-                        香り豊かで健康的な柿の葉茶を提供。
-                        伝統的な製法を大切にしながら、現代のライフスタイルに合った
-                        新しい柿の葉の楽しみ方を提案しています。
+                    <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6">柿の葉加工事業</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed thin-text">
+                        奈良の豊かな自然の恵みである柿の葉を活用した事業を展開しています。「柿の葉茶専門店SOUSUKE by ほうせき箱」では、地元の耕作放棄地を借りて自ら柿葉を栽培し、自然栽培にこだわり厳選された柿の葉から作られる香り豊かで健康的な柿の葉茶を提供しています。ビタミンCが豊富に含まれる柿の葉は、古くから奈良の人々に愛され続けてきた伝統的な健康素材です。薪火焙煎による深煎りの製法など、現代のライフスタイルに合った新しい柿の葉の楽しみ方を提案しています。
                     </p>
-                    <div class="space-y-3">
-                        <a href="https://sousuke-kakiha.com" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                    <div class="space-y-2">
+                        <a href="https://sousuke-kakiha.com" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             柿の葉茶専門店SOUSUKE by ほうせき箱
                         </a>
-                        <a href="https://maps.google.com/?q=奈良市登大路町+奈良公園バスターミナル" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                        <a href="https://maps.google.com/?q=奈良市登大路町+奈良公園バスターミナル" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             SOUSUKE（Google マップ）
                         </a>
-                        <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="block text-xs text-gray-500 hover:text-gray-700 font-light transition-colors">
+                        <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
                             Instagram @kakiha_sousuke
                         </a>
                     </div>
@@ -208,76 +190,62 @@
                 <div>
                     <img src="DSC04887.jpg" 
                          alt="美しい柿の葉" 
-                         class="w-full h-80 object-cover border border-gray-200">
+                         class="w-full h-64 object-cover border border-gray-200">
                 </div>
             </div>
         </section>
     </main>
 
-    
     <!-- Instagram Latest Posts -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-2xl font-light text-gray-800 text-center mb-16 tracking-wide">Instagram</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <!-- ほうせき箱 Instagram -->
-                <div class="group">
-                    <a href="https://www.instagram.com/housekibaco/" target="_blank" class="block">
-                        <div class="aspect-square border border-gray-200 overflow-hidden mb-3 group-hover:border-gray-400 transition-colors">
-                            <img src="IMG_1769.JPG" alt="ほうせき箱" class="w-full h-full object-cover" loading="lazy">
-                        </div>
-                        <p class="text-xs text-gray-500 font-light text-center">ほうせき箱</p>
-                        <p class="text-xs text-gray-400 font-light text-center">@housekibaco</p>
-                    </a>
-                </div>
-                <!-- 鹿活 Instagram -->
-                <div class="group">
-                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="block">
-                        <div class="aspect-square border border-gray-200 overflow-hidden mb-3 group-hover:border-gray-400 transition-colors">
-                            <img src="DSC08803.jpg" alt="奈良鹿活" class="w-full h-full object-cover" loading="lazy">
-                        </div>
-                        <p class="text-xs text-gray-500 font-light text-center">奈良鹿活</p>
-                        <p class="text-xs text-gray-400 font-light text-center">@lovenaradeer</p>
-                    </a>
-                </div>
-                <!-- 柿の葉加工事業 Instagram -->
-                <div class="group">
-                    <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="block">
-                        <div class="aspect-square border border-gray-200 overflow-hidden mb-3 group-hover:border-gray-400 transition-colors">
-                            <img src="DSC04887.jpg" alt="柿の葉加工事業" class="w-full h-full object-cover" loading="lazy">
-                        </div>
-                        <p class="text-xs text-gray-500 font-light text-center">柿の葉加工事業</p>
-                        <p class="text-xs text-gray-400 font-light text-center">@kakiha_sousuke</p>
-                    </a>
-                </div>
-                <!-- 平宗 Instagram -->
-                <div class="group">
-                    <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="block">
-                        <div class="aspect-square border border-gray-200 overflow-hidden mb-3 group-hover:border-gray-400 transition-colors">
-                            <img src="kakinohazushi.jpg" alt="平宗" class="w-full h-full object-cover" loading="lazy">
-                        </div>
-                        <p class="text-xs text-gray-500 font-light text-center">平宗</p>
-                        <p class="text-xs text-gray-400 font-light text-center">@hiraso_jp</p>
-                    </a>
-                </div>
-            </div>
-            <div class="text-center mt-12">
-                <div class="flex justify-center space-x-8 flex-wrap">
-                    <a href="https://www.instagram.com/housekibaco/" target="_blank" class="text-xs text-gray-500 hover:text-gray-700 font-light transition-colors mb-2">@housekibaco</a>
-                    <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="text-xs text-gray-500 hover:text-gray-700 font-light transition-colors mb-2">@lovenaradeer</a>
-                    <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="text-xs text-gray-500 hover:text-gray-700 font-light transition-colors mb-2">@kakiha_sousuke</a>
-                    <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="text-xs text-gray-500 hover:text-gray-700 font-light transition-colors mb-2">@hiraso_jp</a>
-                </div>
+    <section class="py-16 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl medium-text text-gray-900 text-center mb-12">Instagram</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- ほうせき箱 -->
+                <a href="https://www.instagram.com/housekibaco/" target="_blank" class="group">
+                    <div class="aspect-square overflow-hidden border border-gray-200 group-hover:border-gray-400 transition-colors">
+                        <img src="images/housekibaco.png" alt="ほうせき箱" class="w-[85%] h-[85%] object-cover group-hover:scale-105 transition-transform duration-300 mx-auto mt-4">
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 text-center">@housekibaco</p>
+                </a>
+                <!-- 鹿活 -->
+                <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="group">
+                    <div class="aspect-square overflow-hidden border border-gray-200 group-hover:border-gray-400 transition-colors">
+                        <img src="images/lovenaradeer.png" alt="鹿活" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 text-center">@lovenaradeer</p>
+                </a>
+                <!-- 柿の葉加工 -->
+                <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="group">
+                    <div class="aspect-square overflow-hidden border border-gray-200 group-hover:border-gray-400 transition-colors">
+                        <img src="images/sousuke.png" alt="柿の葉加工" class="w-[85%] h-[85%] object-cover group-hover:scale-105 transition-transform duration-300 m-auto">
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 text-center">@kakiha_sousuke</p>
+                </a>
+                <!-- 平宗 -->
+                <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="group">
+                    <div class="aspect-square overflow-hidden border border-gray-200 group-hover:border-gray-400 transition-colors">
+                        <img src="images/hiraso.png" alt="平宗" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 text-center">@hiraso_jp</p>
+                </a>
             </div>
         </div>
     </section>
-    
-    <footer class="py-12 border-t border-gray-200">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <p class="text-xs text-gray-400 font-light">© 2025 Sousuke Hirai</p>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-4 thin-text">© 2025 Sousuke Hirai</p>
+            <div class="flex justify-center space-x-8 text-sm">
+                <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="hover:text-white transition-colors">
+                    Instagram
+                </a>
+                <a href="https://sousuke-kakiha.com" target="_blank" class="hover:text-white transition-colors">
+                    Website
+                </a>
+            </div>
         </div>
     </footer>
-
-    <script src="assets/main.js"></script>
 </body>
 </html>

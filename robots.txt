@@ -1,0 +1,57 @@
+# robots.txt for https://sousuke0119.github.io/my-website/
+# 平井宗助の活動紹介サイト
+
+# すべての検索エンジンに対する設定
+User-agent: *
+
+# 許可するページ
+Allow: /
+Allow: /index.html
+Allow: /profile.html
+Allow: /contact-form.html
+
+# 画像ファイルを許可
+Allow: /*.jpg
+Allow: /*.JPG
+Allow: /*.png
+Allow: /*.PNG
+Allow: /images/
+
+# バックアップファイルや一時ファイルを禁止
+Disallow: /*.backup
+Disallow: /*~
+Disallow: /*.tmp
+Disallow: /.git/
+Disallow: /.gitignore
+
+# アセットファイルを許可（CSS、JS）
+Allow: /assets/
+Allow: /*.css
+Allow: /*.js
+
+# サイトマップの場所を指定
+Sitemap: https://sousuke0119.github.io/my-website/sitemap.xml
+
+# 主要検索エンジン向けの特別設定
+
+# Google
+User-agent: Googlebot
+Crawl-delay: 1
+
+# Bing
+User-agent: Bingbot
+Crawl-delay: 1
+
+# Yahoo
+User-agent: Slurp
+Crawl-delay: 1
+
+# SNSクローラー（OGP画像取得用）
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
