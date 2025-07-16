@@ -414,8 +414,8 @@
                 alt: '特製フルーツかき氷 - 新鮮なフルーツをふんだんに使用した贅沢な仕上がり'
             },
             {
-                src: 'images/kakigorihousekibaco.JPG',
-                alt: 'ほうせき箱の看板かき氷 - 一年中楽しめる儚い口どけが自慢の逸品'
+                src: 'images/IMG_1991.jpg',
+                alt: 'ほうせき箱の創作かき氷 - 季節感溢れる美しい盛り付け'
             }
         ];
 
@@ -436,6 +436,7 @@
         }
 
         function nextImage() {
+            console.log('Switching kakigori image to index:', (currentImageIndex + 1) % kakigoriImages.length);
             // フェードアウト
             kakigoriImg.style.opacity = '0';
             
@@ -443,6 +444,7 @@
                 currentImageIndex = (currentImageIndex + 1) % kakigoriImages.length;
                 const newImage = kakigoriImages[currentImageIndex];
                 
+                console.log('Loading kakigori image:', newImage.src);
                 kakigoriImg.src = newImage.src;
                 kakigoriImg.alt = newImage.alt;
                 
@@ -454,6 +456,7 @@
 
         // 初期ドット状態設定
         updateDots();
+        console.log('Kakigori slideshow initialized with', kakigoriImages.length, 'images');
 
         // 4秒ごとに画像を切り替え
         setInterval(nextImage, 4000);
