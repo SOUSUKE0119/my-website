@@ -395,151 +395,126 @@
     </footer>
 
     <script>
-        // かき氷画像スライドショー
-        const kakigoriImages = [
-            {
-                src: 'IMG_1769.JPG',
-                alt: '美しく盛られたかき氷 - 奈良食材を活かした一年中楽しめるかき氷の代表例'
-            },
-            {
-                src: 'images/IMG_1559.jpg',
-                alt: 'ほうせき箱の季節限定かき氷 - 奈良の旬の食材を使用したこだわりの一品'
-            },
-            {
-                src: 'images/IMG_1591.jpg',
-                alt: '色鮮やかなかき氷 - 見た目も美しい芸術的なかき氷作品'
-            },
-            {
-                src: 'images/IMG_1989.jpg',
-                alt: '特製フルーツかき氷 - 新鮮なフルーツをふんだんに使用した贅沢な仕上がり'
-            },
-            {
-                src: 'images/IMG_1991.jpg',
-                alt: 'ほうせき箱の創作かき氷 - 季節感溢れる美しい盛り付け'
-            }
-        ];
-
-        let currentImageIndex = 0;
-        const kakigoriImg = document.getElementById('kakigori-image');
-        const dots = document.querySelectorAll('.kakigori-dot');
-
-        function updateDots() {
-            dots.forEach((dot, index) => {
-                if (index === currentImageIndex) {
-                    dot.classList.remove('bg-opacity-50');
-                    dot.classList.add('bg-opacity-100');
-                } else {
-                    dot.classList.remove('bg-opacity-100');
-                    dot.classList.add('bg-opacity-50');
-                }
-            });
-        }
-
-        function nextImage() {
-            console.log('Switching kakigori image to index:', (currentImageIndex + 1) % kakigoriImages.length);
-            // フェードアウト
-            kakigoriImg.style.opacity = '0';
+        // ページ読み込み完了後に実行
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing slideshows...');
             
-            setTimeout(() => {
+            // かき氷画像スライドショー
+            const kakigoriImages = [
+                'IMG_1769.JPG',
+                'images/IMG_1559.jpg', 
+                'images/IMG_1591.jpg',
+                'images/IMG_1989.jpg',
+                'images/IMG_1991.jpg'
+            ];
+
+            let currentImageIndex = 0;
+            const kakigoriImg = document.getElementById('kakigori-image');
+            const dots = document.querySelectorAll('.kakigori-dot');
+
+            if (!kakigoriImg) {
+                console.error('Kakigori image element not found');
+                return;
+            }
+
+            console.log('Found kakigori image element and', dots.length, 'dots');
+
+            function updateDots() {
+                dots.forEach((dot, index) => {
+                    if (index === currentImageIndex) {
+                        dot.style.opacity = '1';
+                    } else {
+                        dot.style.opacity = '0.5';
+                    }
+                });
+            }
+
+            function nextKakigoriImage() {
+                console.log('Switching kakigori image from', currentImageIndex, 'to', (currentImageIndex + 1) % kakigoriImages.length);
+                
                 currentImageIndex = (currentImageIndex + 1) % kakigoriImages.length;
-                const newImage = kakigoriImages[currentImageIndex];
+                const newImageSrc = kakigoriImages[currentImageIndex];
                 
-                console.log('Loading kakigori image:', newImage.src);
-                kakigoriImg.src = newImage.src;
-                kakigoriImg.alt = newImage.alt;
+                console.log('Loading kakigori image:', newImageSrc);
                 
-                // フェードイン
-                kakigoriImg.style.opacity = '1';
+                // 直接画像を変更
+                kakigoriImg.src = newImageSrc;
+                kakigoriImg.alt = '美しく盛られたかき氷 - 奈良食材を活かした一年中楽しめるかき氷';
+                
                 updateDots();
-            }, 500);
-        }
-
-        // 初期ドット状態設定
-        updateDots();
-        console.log('Kakigori slideshow initialized with', kakigoriImages.length, 'images');
-
-        // 4秒ごとに画像を切り替え
-        setInterval(nextImage, 4000);
-
-        // 画像読み込みエラー時の処理
-        kakigoriImg.addEventListener('error', function() {
-            console.log('Image failed to load:', this.src);
-            // エラー時は次の画像に自動で切り替え
-            nextImage();
-        });
-
-        // 商店街画像スライドショー
-        const shotengaiImages = [
-            {
-                src: 'shotengai.jpg',
-                alt: '活気ある商店街の風景 - 奈良もちいどのセンター街の賑わいと新しい魅力を創造する取り組み'
-            },
-            {
-                src: 'images/shotengai01.jpg',
-                alt: '奈良もちいどのセンター街の日常風景 - 歴史ある商店街の温かな雰囲気'
-            },
-            {
-                src: 'images/shotengai02.jpg',
-                alt: '商店街の新しい店舗 - 伝統と革新が融合する新たな魅力'
-            },
-            {
-                src: 'images/shotengai03.jpg',
-                alt: '賑わう商店街 - 地域コミュニティの中心としての役割'
-            },
-            {
-                src: 'images/shotengai04.jpg',
-                alt: '商店街活性化プロジェクト - 餅飯殿NEXT+の取り組み'
-            },
-            {
-                src: 'images/shotengai05.jpg',
-                alt: '商店街の未来 - 新しいコミュニティ空間の創造'
             }
-        ];
 
-        let currentShotengaiIndex = 0;
-        const shotengaiImg = document.getElementById('shotengai-image');
-        const shotengaiDots = document.querySelectorAll('.shotengai-dot');
+            // 初期状態設定
+            updateDots();
+            console.log('Kakigori slideshow initialized');
 
-        function updateShotengaiDots() {
-            shotengaiDots.forEach((dot, index) => {
-                if (index === currentShotengaiIndex) {
-                    dot.classList.remove('bg-opacity-50');
-                    dot.classList.add('bg-opacity-100');
-                } else {
-                    dot.classList.remove('bg-opacity-100');
-                    dot.classList.add('bg-opacity-50');
-                }
+            // 3秒ごとに画像を切り替え（短めに設定してテスト）
+            setInterval(nextKakigoriImage, 3000);
+
+            // 画像読み込みエラー時の処理
+            kakigoriImg.addEventListener('error', function() {
+                console.log('Kakigori image failed to load:', this.src);
+                nextKakigoriImage();
             });
-        }
 
-        function nextShotengaiImage() {
-            // フェードアウト
-            shotengaiImg.style.opacity = '0';
-            
-            setTimeout(() => {
+            // 商店街画像スライドショー
+            const shotengaiImages = [
+                'shotengai.jpg',
+                'images/shotengai01.jpg',
+                'images/shotengai02.jpg',
+                'images/shotengai03.jpg',
+                'images/shotengai04.jpg',
+                'images/shotengai05.jpg'
+            ];
+
+            let currentShotengaiIndex = 0;
+            const shotengaiImg = document.getElementById('shotengai-image');
+            const shotengaiDots = document.querySelectorAll('.shotengai-dot');
+
+            if (!shotengaiImg) {
+                console.error('Shotengai image element not found');
+                return;
+            }
+
+            console.log('Found shotengai image element and', shotengaiDots.length, 'dots');
+
+            function updateShotengaiDots() {
+                shotengaiDots.forEach((dot, index) => {
+                    if (index === currentShotengaiIndex) {
+                        dot.style.opacity = '1';
+                    } else {
+                        dot.style.opacity = '0.5';
+                    }
+                });
+            }
+
+            function nextShotengaiImage() {
+                console.log('Switching shotengai image from', currentShotengaiIndex, 'to', (currentShotengaiIndex + 1) % shotengaiImages.length);
+                
                 currentShotengaiIndex = (currentShotengaiIndex + 1) % shotengaiImages.length;
-                const newImage = shotengaiImages[currentShotengaiIndex];
+                const newImageSrc = shotengaiImages[currentShotengaiIndex];
                 
-                shotengaiImg.src = newImage.src;
-                shotengaiImg.alt = newImage.alt;
+                console.log('Loading shotengai image:', newImageSrc);
                 
-                // フェードイン
-                shotengaiImg.style.opacity = '1';
+                // 直接画像を変更
+                shotengaiImg.src = newImageSrc;
+                shotengaiImg.alt = '活気ある商店街の風景 - 奈良もちいどのセンター街の取り組み';
+                
                 updateShotengaiDots();
-            }, 500);
-        }
+            }
 
-        // 商店街の初期ドット状態設定
-        updateShotengaiDots();
+            // 商店街の初期ドット状態設定
+            updateShotengaiDots();
+            console.log('Shotengai slideshow initialized');
 
-        // 5秒ごとに商店街画像を切り替え（かき氷と異なるタイミングにする）
-        setInterval(nextShotengaiImage, 5000);
+            // 4秒ごとに商店街画像を切り替え
+            setInterval(nextShotengaiImage, 4000);
 
-        // 商店街画像読み込みエラー時の処理
-        shotengaiImg.addEventListener('error', function() {
-            console.log('Shotengai image failed to load:', this.src);
-            // エラー時は次の画像に自動で切り替え
-            nextShotengaiImage();
+            // 商店街画像読み込みエラー時の処理
+            shotengaiImg.addEventListener('error', function() {
+                console.log('Shotengai image failed to load:', this.src);
+                nextShotengaiImage();
+            });
         });
     </script>
 </body>
