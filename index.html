@@ -250,14 +250,24 @@
         <!-- 商店街活性化セクション -->
         <article class="mb-20" itemscope itemtype="https://schema.org/CreativeWork">
             <div class="grid md:grid-cols-2 gap-12 items-start">
-                <div class="order-2 md:order-1">
-                    <img src="shotengai.jpg" 
+                <div class="order-2 md:order-1 relative">
+                    <img id="shotengai-image" 
+                         src="shotengai.jpg" 
                          alt="活気ある商店街の風景 - 奈良もちいどのセンター街の賑わいと新しい魅力を創造する取り組み" 
-                         class="w-full h-64 object-cover border border-gray-200"
+                         class="w-full h-64 object-cover border border-gray-200 transition-opacity duration-1000"
                          loading="lazy"
                          width="400"
                          height="256"
                          itemprop="image">
+                    <!-- 商店街スライドショーインジケーター -->
+                    <div class="absolute bottom-2 right-2 flex space-x-1">
+                        <div class="shotengai-dot w-2 h-2 bg-white bg-opacity-50 rounded-full transition-all duration-300"></div>
+                        <div class="shotengai-dot w-2 h-2 bg-white bg-opacity-50 rounded-full transition-all duration-300"></div>
+                        <div class="shotengai-dot w-2 h-2 bg-white bg-opacity-50 rounded-full transition-all duration-300"></div>
+                        <div class="shotengai-dot w-2 h-2 bg-white bg-opacity-50 rounded-full transition-all duration-300"></div>
+                        <div class="shotengai-dot w-2 h-2 bg-white bg-opacity-50 rounded-full transition-all duration-300"></div>
+                        <div class="shotengai-dot w-2 h-2 bg-white bg-opacity-50 rounded-full transition-all duration-300"></div>
+                    </div>
                 </div>
                 <div class="order-1 md:order-2">
                     <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6" itemprop="name">商店街活性化</h2>
@@ -453,6 +463,80 @@
             console.log('Image failed to load:', this.src);
             // エラー時は次の画像に自動で切り替え
             nextImage();
+        });
+
+        // 商店街画像スライドショー
+        const shotengaiImages = [
+            {
+                src: 'shotengai.jpg',
+                alt: '活気ある商店街の風景 - 奈良もちいどのセンター街の賑わいと新しい魅力を創造する取り組み'
+            },
+            {
+                src: 'images/shotengai01.jpg',
+                alt: '奈良もちいどのセンター街の日常風景 - 歴史ある商店街の温かな雰囲気'
+            },
+            {
+                src: 'images/shotengai02.jpg',
+                alt: '商店街の新しい店舗 - 伝統と革新が融合する新たな魅力'
+            },
+            {
+                src: 'images/shotengai03.jpg',
+                alt: '賑わう商店街 - 地域コミュニティの中心としての役割'
+            },
+            {
+                src: 'images/shotengai04.jpg',
+                alt: '商店街活性化プロジェクト - 餅飯殿NEXT+の取り組み'
+            },
+            {
+                src: 'images/shotengai05.jpg',
+                alt: '商店街の未来 - 新しいコミュニティ空間の創造'
+            }
+        ];
+
+        let currentShotengaiIndex = 0;
+        const shotengaiImg = document.getElementById('shotengai-image');
+        const shotengaiDots = document.querySelectorAll('.shotengai-dot');
+
+        function updateShotengaiDots() {
+            shotengaiDots.forEach((dot, index) => {
+                if (index === currentShotengaiIndex) {
+                    dot.classList.remove('bg-opacity-50');
+                    dot.classList.add('bg-opacity-100');
+                } else {
+                    dot.classList.remove('bg-opacity-100');
+                    dot.classList.add('bg-opacity-50');
+                }
+            });
+        }
+
+        function nextShotengaiImage() {
+            // フェードアウト
+            shotengaiImg.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentShotengaiIndex = (currentShotengaiIndex + 1) % shotengaiImages.length;
+                const newImage = shotengaiImages[currentShotengaiIndex];
+                
+                shotengaiImg.src = newImage.src;
+                shotengaiImg.alt = newImage.alt;
+                
+                // フェードイン
+                shotengaiImg.style.opacity = '1';
+                updateShotengaiDots();
+            }, 500);
+        }
+
+        // 商店街の初期ドット状態設定
+        updateShotengaiDots();
+
+        // 5秒ごとに商店街画像を切り替え（かき氷と異なるタイミングにする）
+        setInterval(nextShotengaiImage, 5000);
+
+        // 商店街画像読み込みエラー時の処理
+        shotengaiImg.addEventListener('error', function() {
+            console.log('Shotengai image failed to load:', this.src);
+            // エラー時は次の画像に自動で切り替え
+            nextShotengaiImage();
         });
     </script>
 </body>
