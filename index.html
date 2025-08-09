@@ -143,9 +143,28 @@
         <section class="mb-20">
             <div class="grid md:grid-cols-2 gap-12 items-start">
                 <div class="order-2 md:order-1">
-                    <img src="shotengai.jpg" 
-                         alt="活気ある商店街の風景" 
-                         class="w-full h-64 object-cover border border-gray-200">
+                    <!-- Slideshow Container -->
+                    <div class="relative w-full h-64 border border-gray-200 overflow-hidden">
+                        <!-- Slideshow Images -->
+                        <div class="slideshow-container">
+                            <img src="images/shotengai01.jpg" alt="商店街の風景 1" class="slideshow-image w-full h-64 object-cover absolute top-0 left-0 opacity-100 transition-opacity duration-500">
+                            <img src="images/shotengai02.jpg" alt="商店街の風景 2" class="slideshow-image w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-500">
+                            <img src="images/shotengai03.jpg" alt="商店街の風景 3" class="slideshow-image w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-500">
+                            <img src="images/shotengai04.jpg" alt="商店街の風景 4" class="slideshow-image w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-500">
+                            <img src="images/shotengai05.jpg" alt="商店街の風景 5" class="slideshow-image w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-500">
+                            <img src="images/shotengai06.jpg" alt="商店街の風景 6" class="slideshow-image w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-500">
+                        </div>
+                        
+                        <!-- Dot Indicators -->
+                        <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button class="slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition-all duration-300" data-slide="0"></button>
+                            <button class="slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="1"></button>
+                            <button class="slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="2"></button>
+                            <button class="slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="3"></button>
+                            <button class="slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="4"></button>
+                            <button class="slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="5"></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="order-1 md:order-2">
                     <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6">商店街活性化</h2>
@@ -247,5 +266,60 @@
             </div>
         </div>
     </footer>
+    <!-- Slideshow JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slideshow-image');
+            const dots = document.querySelectorAll('.slideshow-dot');
+            const totalSlides = slides.length;
+
+            // Function to show specific slide
+            function showSlide(n) {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.style.opacity = '0';
+                });
+                
+                // Update dots
+                dots.forEach(dot => {
+                    dot.classList.remove('bg-opacity-100');
+                    dot.classList.add('bg-opacity-50');
+                });
+
+                // Show current slide
+                if (slides[n]) {
+                    slides[n].style.opacity = '1';
+                }
+                
+                // Highlight current dot
+                if (dots[n]) {
+                    dots[n].classList.remove('bg-opacity-50');
+                    dots[n].classList.add('bg-opacity-100');
+                }
+                
+                currentSlide = n;
+            }
+
+            // Function to go to next slide
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+
+            // Add click event to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+
+            // Auto-advance slideshow every 3 seconds
+            setInterval(nextSlide, 3000);
+
+            // Initialize first slide
+            showSlide(0);
+        });
+    </script>
 </body>
 </html>
