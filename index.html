@@ -3,302 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOUSUKE | 奈良のかき氷・柿の葉ずし・地域活性化事業</title>
-    <meta name="description" content="奈良の伝統文化を次世代へ継承。かき氷専門店ほうせき箱、柿の葉ずし文化継承、奈良公園の鹿保護活動、商店街活性化プロジェクトを展開するSOUSUKEの取り組み。">
-    <meta name="keywords" content="奈良,かき氷,柿の葉ずし,ほうせき箱,奈良公園,鹿,商店街活性化,柿の葉茶,奈良観光,伝統文化">
-    <meta name="author" content="SOUSUKE">
-    
-    <!-- OGP Tags -->
-    <meta property="og:title" content="SOUSUKE | 奈良のかき氷・柿の葉ずし・地域活性化事業">
-    <meta property="og:description" content="奈良の伝統文化を次世代へ継承。かき氷専門店ほうせき箱、柿の葉ずし文化継承、奈良公園の鹿保護活動を展開。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sousuke0119.github.io/my-website/index.html">
-    <meta property="og:image" content="https://sousuke0119.github.io/my-website/DSC08803.jpg">
-    <meta property="og:site_name" content="SOUSUKE">
-    <meta property="og:locale" content="ja_JP">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SOUSUKE | 奈良のかき氷・柿の葉ずし・地域活性化事業">
-    <meta name="twitter:description" content="奈良の伝統文化を次世代へ継承。かき氷専門店ほうせき箱、柿の葉ずし文化継承、奈良公園の鹿保護活動を展開。">
-    <meta name="twitter:image" content="https://sousuke0119.github.io/my-website/DSC08803.jpg">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "SOUSUKE",
-        "description": "奈良の伝統文化を次世代へ継承する取り組みを展開",
-        "url": "https://sousuke0119.github.io/my-website/index.html",
-        "logo": "https://sousuke0119.github.io/my-website/DSC08803.jpg",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "奈良市",
-            "addressRegion": "奈良県",
-            "addressCountry": "JP"
-        }
-    }
-    </script>
-    
-    <!-- CSS Styles -->
+    <title>平井宗助の活動紹介</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', 'Meiryo', sans-serif;
-            line-height: 1.7;
-            color: #333;
-            background-color: #fff;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-        }
-        
-        .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-        }
-        
-        nav {
-            background-color: #34495e;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        nav li {
-            margin: 0 1rem;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        
-        nav a:hover {
-            background-color: #2c3e50;
-        }
-        
-        main {
-            padding: 4rem 0;
-        }
-        
-        section {
-            margin-bottom: 4rem;
-            scroll-margin-top: 100px;
-        }
-        
-        h2 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 2rem;
-            border-bottom: 4px solid #3498db;
-            padding-bottom: 1rem;
-            text-align: center;
-        }
-        
-        .intro-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 4rem 2rem;
-            border-radius: 20px;
-            margin-bottom: 4rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .intro-section h2 {
-            border: none;
-            margin-bottom: 2rem;
-        }
-        
-        .intro-section p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            color: #555;
-        }
-        
-        .business-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-        
-        .business-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .business-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .business-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        
-        .business-card-content {
-            padding: 2rem;
-        }
-        
-        .business-card h3 {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-        }
-        
-        .business-card p {
-            line-height: 1.8;
-            color: #555;
-            font-size: 1rem;
-        }
-        
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 5rem;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .business-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav li {
-                margin: 0.5rem 0;
-            }
-            
-            .intro-section {
-                padding: 2rem 1rem;
-            }
-        }
+        * { font-family: 'Inter', sans-serif; font-weight: 300; }
+        .thin-text { font-weight: 200; }
+        .normal-text { font-weight: 300; }
+        .medium-text { font-weight: 400; }
+        .semi-bold-text { font-weight: 500; }
     </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <h1>SOUSUKE</h1>
-            <p class="subtitle">奈良の伝統文化を次世代へ継承する</p>
-        </div>
-    </header>
-    
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#intro">私たちの使命</a></li>
-                <li><a href="#kakigori">かき氷事業</a></li>
-                <li><a href="#kakinoha">柿の葉ずし</a></li>
-                <li><a href="#shika">鹿活動</a></li>
-                <li><a href="#shotengai">商店街活性化</a></li>
-                <li><a href="#kakinoha-tea">柿の葉加工</a></li>
-            </ul>
-        </div>
-    </nav>
-    
-    <main>
-        <div class="container">
-            <section id="intro" class="intro-section">
-                <h2>私たちの使命</h2>
-                <p>奈良の豊かな文化と伝統を大切にしながら、新しい価値を創造し、地域の魅力を国内外に発信しています。かき氷、柿の葉ずし、鹿との共生、商店街の活性化を通じて、奈良の文化が五十年、百年先も続くよう活動を続けています。</p>
-            </section>
-            
-            <div class="business-grid">
-                <article id="kakigori" class="business-card">
-                    <div class="business-card-content">
-                        <h3>かき氷専門店「ほうせき箱」</h3>
-                        <p>2015年開業の『kakigori ほうせき箱』は、奈良食材を活かし"一年中儚い口どけ"のかき氷を追求。現在も来客が絶えず、国内外のファンを魅了しています。14年、氷室神社と『ひむろしらゆき祭』を立ち上げ、献氷祭前の恒例行事として定着。15年から毎年制作する『奈良かき氷ガイド』で奈良県内の個性豊かな一杯を紹介し、かき氷で奈良を巡る仕組みを構築。店舗・祭り・ガイドの三本柱で、奈良のかき氷文化が五十年、百年先も続くよう、活動を続けています。</p>
-                    </div>
-                </article>
-                
-                <article id="kakinoha" class="business-card">
-                    <img src="kakinohazushi.jpg" alt="奈良の伝統的な柿の葉ずし" loading="lazy">
-                    <div class="business-card-content">
-                        <h3>柿の葉ずし文化継承</h3>
-                        <p>奈良の郷土料理・柿の葉ずしの魅力を次世代へ伝えるため、歴史的・文化的価値を積極的に発信しています。手作り体験や講演を通じて、"包む"という優しい文化、柿の葉の抗菌・保存性、そして歌舞伎『義経千本桜』を通じて語られる鮎のなれ寿司の物語など、多面的な魅力を紹介。伝統を大切にしながら新しい商品開発にも積極的に挑戦し、自社ブランドにとどまらず柿の葉ずし文化全体の発展と継承を目指し、お客様にその奥深さと楽しさを届けています。</p>
-                    </div>
-                </article>
-                
-                <article id="shika" class="business-card">
-                    <img src="DSC08803.jpg" alt="奈良公園の美しい鹿と四季の風景" loading="lazy">
-                    <div class="business-card-content">
-                        <h3>鹿活（奈良公園の鹿保護活動）</h3>
-                        <p>季節ごとに移ろう奈良公園の風景とともに鹿たちの姿を写真に収めています。彼らを取り巻く環境が年々変化する中でも、神の使いとされる鹿が安心して暮らせる場所を未来へ残したい──その想いで、朝のまばゆい光の中で春の桜、夏の青葉、秋の紅葉、冬の雪景色に溶け込む鹿の生態を丁寧に記録。写真を通じて、鹿と人がこれからも平和に共生できるよう願いながら、その尊さと四季折々の美しさを広く紹介しています。</p>
-                    </div>
-                </article>
-                
-                <article id="shotengai" class="business-card">
-                    <img src="shotengai.jpg" alt="活気ある奈良もちいどのセンター街の風景" loading="lazy">
-                    <div class="business-card-content">
-                        <h3>商店街活性化プロジェクト</h3>
-                        <p>奈良の歴史ある商店街「奈良もちいどのセンター街」を未来に向けてリニューアルする起爆剤として「餅飯殿NEXT＋（仮）」プロジェクトに取り組んでいます。2007年の「もちいどの夢CUBE」開設以来、「ほうせき箱」をはじめ、伝統的な商業の枠組みを超えた革新的な店舗が生まれ、商店街の新たな魅力を創造してきました。2026年開業予定の「餅飯殿NEXT＋」では、地域の伝統を大切にしながら現代の課題に向き合い、商店街の外にも拡がっていく、今までにない商売やコミュニティーが生まれるチャンスを創出します。</p>
-                    </div>
-                </article>
-                
-                <article id="kakinoha-tea" class="business-card">
-                    <img src="DSC04887.jpg" alt="美しい柿の葉と柿の葉茶" loading="lazy">
-                    <div class="business-card-content">
-                        <h3>柿の葉加工事業</h3>
-                        <p>奈良の豊かな自然の恵みである柿の葉を活用した事業を展開しています。「柿の葉茶専門店SOUSUKE by ほうせき箱」では、地元の耕作放棄地を借りて自ら柿葉を栽培し、自然栽培にこだわり厳選された柿の葉から作られる香り豊かで健康的な柿の葉茶を提供しています。ビタミンCが豊富に含まれる柿の葉は、古くから奈良の人々に愛され続けてきた伝統的な健康素材です。薪火焙煎による深煎りの製法など、現代のライフスタイルに合った新しい柿の葉の楽しみ方を提案しています。</p>
-                    </div>
-                </article>
+<body class="bg-gray-50 text-gray-800 normal-text">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8">
+                <img src="505529836_24041857855455031_355995881674575500_n.jpg" 
+                     alt="平井宗助のプロフィール写真" 
+                     class="w-36 h-36 rounded-full mx-auto mb-6 border border-gray-300 object-cover">
+            </div>
+            <h1 class="text-4xl semi-bold-text text-gray-900 mb-6">SOUSUKE</h1>
+            <div class="mb-6">
+                <span class="text-lg normal-text text-gray-600">わくわくする奈良に囲まれて仕事をしています</span>
+            </div>
+            <p class="text-base thin-text text-gray-500 max-w-2xl mx-auto leading-relaxed mb-8">
+                始まりと今がつながる場所で　大好きなモノやコトをつくりたい<br>
+                <span class="normal-text text-gray-700">KAKIGORI</span> ・ <span class="normal-text text-gray-700">柿の葉ずし</span> ・ <span class="normal-text text-gray-700">柿の葉</span> ・ <span class="normal-text text-gray-700">鹿活</span> ・ <span class="normal-text text-gray-700">商店街</span>
+            </p>
+            <div class="flex justify-center space-x-4 flex-wrap">
+                <a href="https://note.com/a_rimbaud" target="_blank" class="inline-flex items-center px-6 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                    note
+                </a>
+                <a href="https://voicy.jp/channel/2433" target="_blank" class="inline-flex items-center px-6 py-2 bg-gray-700 hover:bg-gray-800 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                    voicy
+                </a>
+                <a href="https://www.facebook.com/hiraisousuke?locale=ja_JP" target="_blank" class="inline-flex items-center px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                    facebook
+                </a>
+                <a href="profile.html" class="inline-flex items-center px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                    詳細プロフィール
+                </a>
+                <a href="contact-form.html" class="inline-flex items-center px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-full text-sm normal-text transition-colors mb-2">
+                    講演のご依頼
+                </a>
             </div>
         </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16">
+        <!-- かき氷セクション -->
+        <section class="mb-20">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6">KAKIGORI</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed thin-text">
+                        2015年開業の『kakigori ほうせき箱』は、奈良食材を活かし"一年中儚い口どけ"のかき氷を追求。現在も来客が絶えず、国内外のファンを魅了しています。14年、氷室神社と『ひむろしらゆき祭』を立ち上げ、献氷祭前の恒例行事として定着。15年から毎年制作する『奈良かき氷ガイド』で奈良県内の個性豊かな一杯を紹介し、かき氷で奈良を巡る仕組みを構築。店舗・祭り・ガイドの三本柱で、奈良のかき氷文化が五十年、百年先も続くよう、活動を続けています。
+                    </p>
+                    <div class="space-y-2 mb-8">
+                        <a href="https://www.instagram.com/housekibaco/" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            ほうせき箱（Instagram）
+                        </a>
+                        <a href="https://maps.google.com/?q=奈良県奈良市餅飯殿町47" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            ほうせき箱（Google マップ）
+                        </a>
+                        <a href="https://himuroshirayuki.com" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            ひむろしらゆき祭
+                        </a>
+                        <a href="https://nara-kakigori.com" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            奈良かき氷ガイド
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <img src="IMG_1769.JPG" 
+                         alt="美しく盛られたかき氷" 
+                         class="w-full h-64 object-cover border border-gray-200">
+                </div>
+            </div>
+        </section>
+
+        <!-- 柿の葉ずしセクション -->
+        <section class="mb-20">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="order-2 md:order-1">
+                    <img src="kakinohazushi.jpg" 
+                         alt="伝統的な柿の葉ずし" 
+                         class="w-full h-64 object-cover border border-gray-200">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6">柿の葉ずし</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed thin-text">
+                        奈良の郷土料理・柿の葉ずしの魅力を次世代へ伝えるため、歴史的・文化的価値を積極的に発信しています。手作り体験や講演を通じて、"包む"という優しい文化、柿の葉の抗菌・保存性、そして歌舞伎『義経千本桜』を通じて語られる鮎のなれ寿司の物語など、多面的な魅力を紹介。伝統を大切にしながら新しい商品開発にも積極的に挑戦し、自社ブランドにとどまらず柿の葉ずし文化全体の発展と継承を目指し、お客様にその奥深さと楽しさを届けています。
+                    </p>
+                    <div class="space-y-2">
+                        <a href="https://hiraso.jp" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            平宗（老舗柿の葉ずし店）
+                        </a>
+                        <a href="https://maps.google.com/?q=奈良県奈良市今御門町30-1" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            平宗 奈良店（Google マップ）
+                        </a>
+                        <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            Instagram @hiraso_jp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 鹿活セクション -->
+        <section class="mb-20">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6">鹿活</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed thin-text">
+                        季節ごとに移ろう奈良公園の風景とともに鹿たちの姿を写真に収めています。彼らを取り巻く環境が年々変化する中でも、神の使いとされる鹿が安心して暮らせる場所を未来へ残したい──その想いで、朝のまばゆい光の中で春の桜、夏の青葉、秋の紅葉、冬の雪景色に溶け込む鹿の生態を丁寧に記録。写真を通じて、鹿と人がこれからも平和に共生できるよう願いながら、その尊さと四季折々の美しさを広く紹介しています。
+                    </p>
+                    <div class="space-y-2">
+                        <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            @lovenaradeer（Instagram）
+                        </a>
+                        <a href="https://maps.google.com/?q=奈良公園" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            奈良公園（Google マップ）
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <img src="DSC08803.jpg" 
+                         alt="奈良公園の美しい鹿" 
+                         class="w-full h-64 object-cover border border-gray-200">
+                </div>
+            </div>
+        </section>
+
+        <!-- 商店街活性化セクション -->
+        <section class="mb-20">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="order-2 md:order-1">
+                    <img src="shotengai.jpg" 
+                         alt="活気ある商店街の風景" 
+                         class="w-full h-64 object-cover border border-gray-200">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6">商店街活性化</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed thin-text">
+                        奈良の歴史ある商店街「奈良もちいどのセンター街」を未来に向けてリニューアルする起爆剤として「餅飯殿NEXT＋（仮）」プロジェクトに取り組んでいます。2007年の「もちいどの夢CUBE」開設以来、「ほうせき箱」をはじめ、伝統的な商業の枠組みを超えた革新的な店舗が生まれ、商店街の新たな魅力を創造してきました。2026年開業予定の「餅飯殿NEXT＋」では、地域の伝統を大切にしながら現代の課題に向き合い、商店街の外にも拡がっていく、今までにない商売やコミュニティーが生まれるチャンスを創出します。
+                    </p>
+                    <div class="space-y-2">
+                        <a href="https://www.mochiidono.com/event102.html" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            餅飯殿 NEXT＋（仮）プロジェクト進行中
+                        </a>
+                        <a href="https://www.mochiidono.com/" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            奈良もちいどのセンター街
+                        </a>
+                        <a href="https://maps.google.com/?q=奈良県奈良市餅飯殿町" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            餅飯殿商店街（Google マップ）
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 柿の葉加工事業セクション -->
+        <section class="mb-20">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h2 class="text-2xl medium-text text-gray-900 border-l-2 border-gray-400 pl-4 mb-6">柿の葉加工事業</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed thin-text">
+                        奈良の豊かな自然の恵みである柿の葉を活用した事業を展開しています。「柿の葉茶専門店SOUSUKE by ほうせき箱」では、地元の耕作放棄地を借りて自ら柿葉を栽培し、自然栽培にこだわり厳選された柿の葉から作られる香り豊かで健康的な柿の葉茶を提供しています。ビタミンCが豊富に含まれる柿の葉は、古くから奈良の人々に愛され続けてきた伝統的な健康素材です。薪火焙煎による深煎りの製法など、現代のライフスタイルに合った新しい柿の葉の楽しみ方を提案しています。
+                    </p>
+                    <div class="space-y-2">
+                        <a href="https://sousuke-kakiha.com" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            柿の葉茶専門店SOUSUKE by ほうせき箱
+                        </a>
+                        <a href="https://maps.google.com/?q=奈良市登大路町+奈良公園バスターミナル" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            SOUSUKE（Google マップ）
+                        </a>
+                        <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="block text-gray-700 hover:text-gray-900 underline text-sm">
+                            Instagram @kakiha_sousuke
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <img src="DSC04887.jpg" 
+                         alt="美しい柿の葉" 
+                         class="w-full h-64 object-cover border border-gray-200">
+                </div>
+            </div>
+        </section>
     </main>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 SOUSUKE. 奈良の文化を次世代へ。</p>
+
+    <!-- Instagram Latest Posts -->
+    <section class="py-16 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl medium-text text-gray-900 text-center mb-12">Instagram</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- ほうせき箱 -->
+                <a href="https://www.instagram.com/housekibaco/" target="_blank" class="group">
+                    <div class="aspect-square overflow-hidden border border-gray-200 group-hover:border-gray-400 transition-colors">
+                        <img src="images/housekibaco.png" alt="ほうせき箱" class="w-[85%] h-[85%] object-cover group-hover:scale-105 transition-transform duration-300 mx-auto mt-4">
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 text-center">@housekibaco</p>
+                </a>
+                <!-- 鹿活 -->
+                <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="group">
+                    <div class="aspect-square overflow-hidden border border-gray-200 group-hover:border-gray-400 transition-colors">
+                        <img src="images/lovenaradeer.png" alt="鹿活" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 text-center">@lovenaradeer</p>
+                </a>
+                <!-- 柿の葉加工 -->
+                <a href="https://www.instagram.com/kakiha_sousuke/" target="_blank" class="group">
+                    <div class="aspect-square overflow-hidden border border-gray-200 group-hover:border-gray-400 transition-colors">
+                        <img src="images/sousuke.png" alt="柿の葉加工" class="w-[85%] h-[85%] object-cover group-hover:scale-105 transition-transform duration-300 m-auto">
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 text-center">@kakiha_sousuke</p>
+                </a>
+                <!-- 平宗 -->
+                <a href="https://www.instagram.com/hiraso_jp/" target="_blank" class="group">
+                    <div class="aspect-square overflow-hidden border border-gray-200 group-hover:border-gray-400 transition-colors">
+                        <img src="images/hiraso.png" alt="平宗" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 text-center">@hiraso_jp</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-4 thin-text">© 2025 Sousuke Hirai</p>
+            <div class="flex justify-center space-x-8 text-sm">
+                <a href="https://www.instagram.com/lovenaradeer/" target="_blank" class="hover:text-white transition-colors">
+                    Instagram
+                </a>
+                <a href="https://sousuke-kakiha.com" target="_blank" class="hover:text-white transition-colors">
+                    Website
+                </a>
+            </div>
         </div>
     </footer>
 </body>
