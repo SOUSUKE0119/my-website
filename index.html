@@ -79,9 +79,26 @@
                     </div>
                 </div>
                 <div>
-                    <img src="IMG_1769.JPG" 
-                         alt="美しく盛られたかき氷" 
-                         class="w-full h-64 object-cover border border-gray-200">
+                    <!-- KAKIGORI Slideshow Container -->
+                    <div class="relative w-full h-64 border border-gray-200 overflow-hidden">
+                        <!-- KAKIGORI Slideshow Images -->
+                        <div class="kakigori-slideshow-container">
+                            <img src="images/IMG_1769.JPG" alt="美しく盛られたかき氷 1" class="kakigori-slideshow-image w-full h-64 object-cover absolute top-0 left-0 opacity-100 transition-opacity duration-500">
+                            <img src="images/IMG_1559.jpg" alt="美しく盛られたかき氷 2" class="kakigori-slideshow-image w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-500">
+                            <img src="images/IMG_1591.jpg" alt="美しく盛られたかき氷 3" class="kakigori-slideshow-image w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-500">
+                            <img src="images/DSC04987 (1).jpg" alt="美しく盛られたかき氷 4" class="kakigori-slideshow-image w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-500">
+                            <img src="images/kakigorihousekibaco.JPG" alt="ほうせき箱のかき氷" class="kakigori-slideshow-image w-full h-64 object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-500">
+                        </div>
+                        
+                        <!-- KAKIGORI Dot Indicators -->
+                        <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button class="kakigori-slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition-all duration-300" data-slide="0"></button>
+                            <button class="kakigori-slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="1"></button>
+                            <button class="kakigori-slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="2"></button>
+                            <button class="kakigori-slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="3"></button>
+                            <button class="kakigori-slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-300" data-slide="4"></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -269,12 +286,19 @@
     <!-- Slideshow JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Shotengai Slideshow
             let currentSlide = 0;
             const slides = document.querySelectorAll('.slideshow-image');
             const dots = document.querySelectorAll('.slideshow-dot');
             const totalSlides = slides.length;
 
-            // Function to show specific slide
+            // KAKIGORI Slideshow
+            let currentKakigoriSlide = 0;
+            const kakigoriSlides = document.querySelectorAll('.kakigori-slideshow-image');
+            const kakigoriDots = document.querySelectorAll('.kakigori-slideshow-dot');
+            const totalKakigoriSlides = kakigoriSlides.length;
+
+            // Function to show specific shotengai slide
             function showSlide(n) {
                 // Hide all slides
                 slides.forEach(slide => {
@@ -301,24 +325,69 @@
                 currentSlide = n;
             }
 
-            // Function to go to next slide
+            // Function to show specific kakigori slide
+            function showKakigoriSlide(n) {
+                // Hide all kakigori slides
+                kakigoriSlides.forEach(slide => {
+                    slide.style.opacity = '0';
+                });
+                
+                // Update kakigori dots
+                kakigoriDots.forEach(dot => {
+                    dot.classList.remove('bg-opacity-100');
+                    dot.classList.add('bg-opacity-50');
+                });
+
+                // Show current kakigori slide
+                if (kakigoriSlides[n]) {
+                    kakigoriSlides[n].style.opacity = '1';
+                }
+                
+                // Highlight current kakigori dot
+                if (kakigoriDots[n]) {
+                    kakigoriDots[n].classList.remove('bg-opacity-50');
+                    kakigoriDots[n].classList.add('bg-opacity-100');
+                }
+                
+                currentKakigoriSlide = n;
+            }
+
+            // Function to go to next shotengai slide
             function nextSlide() {
                 currentSlide = (currentSlide + 1) % totalSlides;
                 showSlide(currentSlide);
             }
 
-            // Add click event to dots
+            // Function to go to next kakigori slide
+            function nextKakigoriSlide() {
+                currentKakigoriSlide = (currentKakigoriSlide + 1) % totalKakigoriSlides;
+                showKakigoriSlide(currentKakigoriSlide);
+            }
+
+            // Add click event to shotengai dots
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     showSlide(index);
                 });
             });
 
-            // Auto-advance slideshow every 3 seconds
-            setInterval(nextSlide, 3000);
+            // Add click event to kakigori dots
+            kakigoriDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showKakigoriSlide(index);
+                });
+            });
 
-            // Initialize first slide
-            showSlide(0);
+            // Auto-advance slideshows every 3 seconds
+            if (totalSlides > 0) {
+                setInterval(nextSlide, 3000);
+                showSlide(0);
+            }
+            
+            if (totalKakigoriSlides > 0) {
+                setInterval(nextKakigoriSlide, 3000);
+                showKakigoriSlide(0);
+            }
         });
     </script>
 </body>
