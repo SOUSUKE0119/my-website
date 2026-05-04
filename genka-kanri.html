@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ほうせき箱 原価管理システム</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tab-active {
+            border-bottom: 3px solid #1F2937;
+            color: #1F2937;
+            font-weight: 600;
+        }
+        .cost-rate-ideal { background-color: #DBEAFE; color: #1E3A8A; }
+        .cost-rate-good { background-color: #D1FAE5; color: #065F46; }
+        .cost-rate-acceptable { background-color: #FEF9C3; color: #854D0E; }
+        .cost-rate-warning { background-color: #FED7AA; color: #9A3412; }
+        .cost-rate-danger { background-color: #FEE2E2; color: #991B1B; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-gray-800">ほうせき箱 原価管理システム</h1>
+                <div class="flex gap-2">
+                    <select id="locationSelect" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-400">
+                        <option value="housekibaco">ほうせき箱</option>
+                        <option value="sousuke">SOUSUKE</option>
+                        <option value="nigatsudo">二月堂</option>
+                        <option value="event">イベント</option>
+                    </select>
+                    <button onclick="syncMaterialsToSheet()" class="px-4 py-2 bg-purple-600 text-white rounded-lg text-sm hover:bg-purple-700" title="材料マスタをスプレッドシートと同期">📊 同期</button>
+                    <button onclick="exportData()" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">エクスポート</button>
+                    <button onclick="document.getElementById('importFile').click()" class="px-4 py-2 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700">インポート</button>
+                    <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex gap-8">
+                <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-active py-4 px-2 text-sm transition-colors">ダッシュボード</button>
+                <button onclick="switchTab('materials')" id="tab-materials" class="py-4 px-2 text-sm text-gray-600 hover:text-gray-800 transition-colors">材料マスタ</button>
+                <button onclick="switchTab('menu')" id="tab-menu" class="py-4 px-2 text-sm text-gray-600 hover:text-gray-800 transition-colors">メニュー登録</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+
+        <!-- Dashboard Tab -->
+        <div id="content-dashboard" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">メニュー別原価率一覧</h2>
+                <div class="mb-4 text-sm text-gray-600">
+                    <span class="inline-block px-3 py-1 rounded cost-rate-ideal mr-2">20%以下：理想</span>
+                    <span class="inline-block px-3 py-1 rounded cost-rate-good mr-2">21-25%：適正</span>
+                    <span class="inline-block px-3 py-1 rounded cost-rate-acceptable mr-2">26-30%：許容</span>
+                    <span class="inline-block px-3 py-1 rounded cost-rate-warning mr-2">31-35%：注意</span>
+                    <span class="inline-block px-3 py-1 rounded cost-rate-danger">36%超：要改善</span>
+                </div>
+                <div id="menuList" class="overflow-x-auto">
+                    <!-- メニュー一覧が表示される -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Materials Tab -->
+        <div id="content-materials" class="tab-content hidden">
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <p class="text-sm text-blue-800">
+                    <span id="sheetStatus" class="font-semibold">📊 スプレッドシート連携: 未設定</span><br>
+                    <span class="text-xs">材料マスタはGoogleスプレッドシートと自動同期されます。「📊 同期」ボタンで手動同期も可能です。</span>
+                </p>
+            </div>
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+                <p class="text-sm text-amber-900 font-semibold mb-2">💡 CSV一括登録の使い方</p>
+                <ol class="text-xs text-amber-800 space-y-1 ml-4 list-decimal">
+                    <li>請求書画像をChatGPT/Claudeに送信し「CSV形式で出力してください」と依頼</li>
+                    <li>生成されたCSVをダウンロード、または「📥 CSVテンプレート」をダウンロードしてExcelで編集</li>
+                    <li>「📄 CSV一括登録」ボタンでファイルを選択</li>
+                    <li>自動的に材料マスタとスプレッドシートに登録されます</li>
+                </ol>
+                <p class="text-xs text-amber-700 mt-2">CSV形式: <code class="bg-white px-1 py-0.5 rounded">材料名,仕入単価,容量,単位</code></p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-gray-800">材料マスタ登録</h2>
+                    <div class="flex gap-2">
+                        <button onclick="document.getElementById('csvImportFile').click()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700">📄 CSV一括登録</button>
+                        <button onclick="downloadCSVTemplate()" class="px-4 py-2 bg-gray-600 text-white rounded-lg text-sm hover:bg-gray-700">📥 CSVテンプレート</button>
+                        <input type="file" id="csvImportFile" accept=".csv" class="hidden" onchange="importCSV(event)">
+                    </div>
+                </div>
+                <form id="materialForm" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <input type="text" id="materialName" placeholder="材料名" required class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    <input type="number" id="materialPrice" placeholder="仕入単価（円）" required step="0.01" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    <input type="number" id="materialQuantity" placeholder="容量" required step="0.01" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    <select id="materialUnit" required class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
+                        <option value="">単位を選択</option>
+                        <option value="g">g（グラム）</option>
+                        <option value="kg">kg（キログラム）</option>
+                        <option value="貫">貫</option>
+                        <option value="ml">ml（ミリリットル）</option>
+                        <option value="L">L（リットル）</option>
+                        <option value="個">個</option>
+                        <option value="枚">枚</option>
+                        <option value="本">本</option>
+                        <option value="袋">袋</option>
+                        <option value="缶">缶</option>
+                        <option value="パック">パック</option>
+                        <option value="束">束</option>
+                        <option value="玉">玉</option>
+                    </select>
+                    <button type="submit" class="md:col-span-4 px-6 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900">材料を追加</button>
+                </form>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">登録済み材料</h2>
+                <div id="materialsList" class="overflow-x-auto">
+                    <!-- 材料一覧が表示される -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Tab -->
+        <div id="content-menu" class="tab-content hidden">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">メニュー登録</h2>
+                <form id="menuForm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <input type="text" id="menuName" placeholder="メニュー名" required class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
+                        <input type="number" id="menuPrice" placeholder="販売価格（円）" required step="1" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    </div>
+
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3">使用材料</h3>
+                        <div id="menuMaterials">
+                            <!-- 材料選択欄が表示される -->
+                        </div>
+                        <button type="button" onclick="addMaterialRow()" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">+ 材料を追加</button>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <span class="text-gray-600">原価合計：</span>
+                                <span id="totalCost" class="font-bold text-lg">¥0</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">原価率：</span>
+                                <span id="costRate" class="font-bold text-lg">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 font-semibold">メニューを登録</button>
+                </form>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">登録済みメニュー</h2>
+                <div id="registeredMenuList" class="overflow-x-auto">
+                    <!-- 登録済みメニュー一覧が表示される -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // ★★★ ここにGoogle Apps ScriptのウェブアプリURLを設定してください ★★★
+        const GOOGLE_SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbxB5fwTU-c-fvknZBspU2t8DV6H3xKsPv8fIK-ADFstqFpTCV9XbnksLTcfD3-PpP_h/exec';
+        // 例: 'https://script.google.com/macros/s/AKfycby.../exec'
+
+        // データ構造
+        let data = {
+            housekibaco: {
+                materials: [],
+                menus: []
+            },
+            sousuke: {
+                materials: [],
+                menus: []
+            },
+            nigatsudo: {
+                materials: [],
+                menus: []
+            },
+            event: {
+                materials: [],
+                menus: []
+            }
+        };
+
+        let currentLocation = 'housekibaco';
+        let useGoogleSheet = false; // スプレッドシート連携の有効/無効
+
+        // 拠点名の日本語変換
+        const locationNames = {
+            'housekibaco': 'ほうせき箱',
+            'sousuke': 'SOUSUKE',
+            'nigatsudo': '二月堂',
+            'event': 'イベント'
+        };
+
+        // Googleスプレッドシート連携チェック
+        function checkGoogleSheetConnection() {
+            useGoogleSheet = GOOGLE_SHEET_API_URL && GOOGLE_SHEET_API_URL !== 'YOUR_WEBAPP_URL_HERE';
+
+            // ステータス表示を更新
+            const statusEl = document.getElementById('sheetStatus');
+            if (statusEl) {
+                if (useGoogleSheet) {
+                    statusEl.innerHTML = '📊 スプレッドシート連携: <span class="text-green-600">有効</span>';
+                    console.log('Googleスプレッドシート連携: 有効');
+                } else {
+                    statusEl.innerHTML = '📊 スプレッドシート連携: <span class="text-gray-500">無効（ローカルモード）</span>';
+                    console.log('Googleスプレッドシート連携: 無効（ローカルモード）');
+                }
+            }
+        }
+
+        // スプレッドシートから材料マスタを取得
+        async function loadMaterialsFromSheet() {
+            if (!useGoogleSheet) return;
+
+            try {
+                const locationJa = locationNames[currentLocation];
+                const response = await fetch(`${GOOGLE_SHEET_API_URL}?location=${encodeURIComponent(locationJa)}`);
+                const result = await response.json();
+
+                if (result.materials) {
+                    data[currentLocation].materials = result.materials;
+                    console.log(`${currentLocation}の材料を読み込みました: ${result.materials.length}件`);
+                }
+            } catch (error) {
+                console.error('材料の読み込みエラー:', error);
+                alert('スプレッドシートからデータを読み込めませんでした。ローカルデータを使用します。');
+            }
+        }
+
+        // 材料をスプレッドシートに追加
+        async function saveMaterialToSheet(material) {
+            if (!useGoogleSheet) return true;
+
+            try {
+                const locationJa = locationNames[currentLocation];
+                const response = await fetch(GOOGLE_SHEET_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'add',
+                        location: locationJa,
+                        material: material
+                    })
+                });
+
+                const result = await response.json();
+                return result.success;
+            } catch (error) {
+                console.error('材料の保存エラー:', error);
+                return false;
+            }
+        }
+
+        // スプレッドシートから材料を削除
+        async function deleteMaterialFromSheet(id) {
+            if (!useGoogleSheet) return true;
+
+            try {
+                const locationJa = locationNames[currentLocation];
+                const response = await fetch(GOOGLE_SHEET_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'delete',
+                        location: locationJa,
+                        id: id
+                    })
+                });
+
+                const result = await response.json();
+                return result.success;
+            } catch (error) {
+                console.error('材料の削除エラー:', error);
+                return false;
+            }
+        }
+
+        // 材料マスタを一括同期
+        async function syncMaterialsToSheet() {
+            if (!useGoogleSheet) {
+                alert('スプレッドシート連携が設定されていません');
+                return;
+            }
+
+            if (!confirm('現在の拠点の材料マスタをスプレッドシートと同期しますか？')) {
+                return;
+            }
+
+            try {
+                const locationJa = locationNames[currentLocation];
+                const response = await fetch(GOOGLE_SHEET_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'sync',
+                        location: locationJa,
+                        materials: data[currentLocation].materials
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('材料マスタを同期しました');
+                } else {
+                    alert('同期に失敗しました: ' + (result.error || '不明なエラー'));
+                }
+            } catch (error) {
+                console.error('同期エラー:', error);
+                alert('同期中にエラーが発生しました: ' + error.message);
+            }
+        }
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', async function() {
+            checkGoogleSheetConnection();
+            loadData();
+
+            // スプレッドシートから材料を読み込み
+            if (useGoogleSheet) {
+                await loadMaterialsFromSheet();
+            }
+
+            renderMaterialsList();
+            renderMenuList();
+            renderRegisteredMenuList();
+            addMaterialRow();
+        });
+
+        // ロケーション変更
+        document.getElementById('locationSelect').addEventListener('change', async function(e) {
+            currentLocation = e.target.value;
+
+            // スプレッドシートから材料を読み込み
+            if (useGoogleSheet) {
+                await loadMaterialsFromSheet();
+            }
+
+            renderMaterialsList();
+            renderMenuList();
+            renderRegisteredMenuList();
+            if (document.getElementById('content-menu').classList.contains('hidden') === false) {
+                updateMaterialSelects();
+            }
+        });
+
+        // タブ切り替え
+        function switchTab(tabName) {
+            // すべてのタブコンテンツを非表示
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // すべてのタブボタンを非アクティブ
+            document.querySelectorAll('[id^="tab-"]').forEach(el => {
+                el.classList.remove('tab-active');
+                el.classList.add('text-gray-600', 'hover:text-gray-800');
+            });
+
+            // 選択されたタブをアクティブ化
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            document.getElementById('tab-' + tabName).classList.add('tab-active');
+            document.getElementById('tab-' + tabName).classList.remove('text-gray-600', 'hover:text-gray-800');
+
+            if (tabName === 'menu') {
+                updateMaterialSelects();
+            } else if (tabName === 'materials') {
+                checkGoogleSheetConnection();
+            }
+        }
+
+        // 材料フォーム送信
+        document.getElementById('materialForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const material = {
+                id: Date.now(),
+                name: document.getElementById('materialName').value,
+                price: parseFloat(document.getElementById('materialPrice').value),
+                quantity: parseFloat(document.getElementById('materialQuantity').value),
+                unit: document.getElementById('materialUnit').value
+            };
+
+            // スプレッドシートに保存
+            if (useGoogleSheet) {
+                const success = await saveMaterialToSheet(material);
+                if (!success) {
+                    alert('スプレッドシートへの保存に失敗しました。ローカルには保存されます。');
+                }
+            }
+
+            // ローカルにも保存
+            data[currentLocation].materials.push(material);
+            saveData();
+            renderMaterialsList();
+            updateMaterialSelects();
+            this.reset();
+        });
+
+        // 材料一覧表示
+        function renderMaterialsList() {
+            const materials = data[currentLocation].materials;
+            const html = materials.length === 0
+                ? '<p class="text-gray-500 text-center py-8">材料が登録されていません</p>'
+                : `
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">材料名</th>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">仕入単価</th>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">容量</th>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">単位あたり単価</th>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            ${materials.map(m => `
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3 text-sm">${m.name}</td>
+                                    <td class="px-4 py-3 text-sm">¥${m.price.toLocaleString()}</td>
+                                    <td class="px-4 py-3 text-sm">${m.quantity}${m.unit}</td>
+                                    <td class="px-4 py-3 text-sm">¥${(m.price / m.quantity).toFixed(2)}/${m.unit}</td>
+                                    <td class="px-4 py-3 text-sm">
+                                        <button onclick="deleteMaterial(${m.id})" class="text-red-600 hover:text-red-800">削除</button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            document.getElementById('materialsList').innerHTML = html;
+        }
+
+        // 材料削除
+        async function deleteMaterial(id) {
+            if (confirm('この材料を削除してもよろしいですか？')) {
+                // スプレッドシートから削除
+                if (useGoogleSheet) {
+                    const success = await deleteMaterialFromSheet(id);
+                    if (!success) {
+                        alert('スプレッドシートからの削除に失敗しました。ローカルからは削除されます。');
+                    }
+                }
+
+                // ローカルから削除
+                data[currentLocation].materials = data[currentLocation].materials.filter(m => m.id !== id);
+                saveData();
+                renderMaterialsList();
+                updateMaterialSelects();
+            }
+        }
+
+        // メニューフォーム用の材料行追加
+        function addMaterialRow() {
+            const container = document.getElementById('menuMaterials');
+            const row = document.createElement('div');
+            row.className = 'grid grid-cols-1 md:grid-cols-3 gap-3 mb-3 material-row';
+            row.innerHTML = `
+                <select class="material-select px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" onchange="updateCost()">
+                    <option value="">材料を選択</option>
+                </select>
+                <input type="number" step="0.01" placeholder="使用量" class="material-quantity px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" onchange="updateCost()">
+                <button type="button" onclick="this.parentElement.remove(); updateCost()" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">削除</button>
+            `;
+            container.appendChild(row);
+            updateMaterialSelects();
+        }
+
+        // 材料セレクトボックス更新
+        function updateMaterialSelects() {
+            const materials = data[currentLocation].materials;
+            const selects = document.querySelectorAll('.material-select');
+
+            selects.forEach(select => {
+                const currentValue = select.value;
+                select.innerHTML = '<option value="">材料を選択</option>' +
+                    materials.map(m => `<option value="${m.id}" ${currentValue == m.id ? 'selected' : ''}>${m.name} (¥${(m.price / m.quantity).toFixed(2)}/${m.unit})</option>`).join('');
+            });
+        }
+
+        // 原価計算
+        function updateCost() {
+            const rows = document.querySelectorAll('.material-row');
+            let totalCost = 0;
+
+            rows.forEach(row => {
+                const materialId = parseInt(row.querySelector('.material-select').value);
+                const quantity = parseFloat(row.querySelector('.material-quantity').value) || 0;
+
+                if (materialId && quantity > 0) {
+                    const material = data[currentLocation].materials.find(m => m.id === materialId);
+                    if (material) {
+                        totalCost += (material.price / material.quantity) * quantity;
+                    }
+                }
+            });
+
+            const menuPrice = parseFloat(document.getElementById('menuPrice').value) || 0;
+            const costRate = menuPrice > 0 ? (totalCost / menuPrice) * 100 : 0;
+
+            document.getElementById('totalCost').textContent = '¥' + totalCost.toFixed(0);
+            document.getElementById('costRate').textContent = costRate.toFixed(1) + '%';
+
+            // 色分け
+            const rateEl = document.getElementById('costRate');
+            rateEl.className = 'font-bold text-lg px-3 py-1 rounded';
+            if (costRate <= 20) {
+                rateEl.classList.add('cost-rate-ideal');
+            } else if (costRate <= 25) {
+                rateEl.classList.add('cost-rate-good');
+            } else if (costRate <= 30) {
+                rateEl.classList.add('cost-rate-acceptable');
+            } else if (costRate <= 35) {
+                rateEl.classList.add('cost-rate-warning');
+            } else {
+                rateEl.classList.add('cost-rate-danger');
+            }
+        }
+
+        // 販売価格変更時も原価率を更新
+        document.getElementById('menuPrice').addEventListener('input', updateCost);
+
+        // メニュー登録
+        document.getElementById('menuForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const rows = document.querySelectorAll('.material-row');
+            const materials = [];
+
+            rows.forEach(row => {
+                const materialId = parseInt(row.querySelector('.material-select').value);
+                const quantity = parseFloat(row.querySelector('.material-quantity').value);
+
+                if (materialId && quantity > 0) {
+                    materials.push({ materialId, quantity });
+                }
+            });
+
+            if (materials.length === 0) {
+                alert('材料を1つ以上選択してください');
+                return;
+            }
+
+            const menu = {
+                id: Date.now(),
+                name: document.getElementById('menuName').value,
+                price: parseFloat(document.getElementById('menuPrice').value),
+                materials: materials
+            };
+
+            data[currentLocation].menus.push(menu);
+            saveData();
+            renderMenuList();
+            renderRegisteredMenuList();
+            this.reset();
+            document.getElementById('menuMaterials').innerHTML = '';
+            addMaterialRow();
+            updateCost();
+
+            alert('メニューを登録しました');
+        });
+
+        // メニュー一覧表示（ダッシュボード）
+        function renderMenuList() {
+            const menus = data[currentLocation].menus;
+            const html = menus.length === 0
+                ? '<p class="text-gray-500 text-center py-8">メニューが登録されていません</p>'
+                : `
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">メニュー名</th>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">販売価格</th>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">原価</th>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">原価率</th>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">評価</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            ${menus.map(menu => {
+                                const cost = calculateMenuCost(menu);
+                                const rate = (cost / menu.price) * 100;
+                                let rateClass, rateLabel;
+
+                                if (rate <= 20) {
+                                    rateClass = 'cost-rate-ideal';
+                                    rateLabel = '理想';
+                                } else if (rate <= 25) {
+                                    rateClass = 'cost-rate-good';
+                                    rateLabel = '適正';
+                                } else if (rate <= 30) {
+                                    rateClass = 'cost-rate-acceptable';
+                                    rateLabel = '許容';
+                                } else if (rate <= 35) {
+                                    rateClass = 'cost-rate-warning';
+                                    rateLabel = '注意';
+                                } else {
+                                    rateClass = 'cost-rate-danger';
+                                    rateLabel = '要改善';
+                                }
+
+                                return `
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-4 py-3 text-sm font-medium">${menu.name}</td>
+                                        <td class="px-4 py-3 text-sm">¥${menu.price.toLocaleString()}</td>
+                                        <td class="px-4 py-3 text-sm">¥${cost.toFixed(0)}</td>
+                                        <td class="px-4 py-3 text-sm"><span class="px-3 py-1 rounded ${rateClass} font-semibold">${rate.toFixed(1)}%</span></td>
+                                        <td class="px-4 py-3 text-sm"><span class="px-3 py-1 rounded ${rateClass}">${rateLabel}</span></td>
+                                    </tr>
+                                `;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                `;
+            document.getElementById('menuList').innerHTML = html;
+        }
+
+        // 登録済みメニュー一覧表示
+        function renderRegisteredMenuList() {
+            const menus = data[currentLocation].menus;
+            const html = menus.length === 0
+                ? '<p class="text-gray-500 text-center py-8">メニューが登録されていません</p>'
+                : `
+                    <div class="space-y-4">
+                        ${menus.map(menu => {
+                            const cost = calculateMenuCost(menu);
+                            const rate = (cost / menu.price) * 100;
+                            let rateClass;
+
+                            if (rate <= 20) {
+                                rateClass = 'cost-rate-ideal';
+                            } else if (rate <= 25) {
+                                rateClass = 'cost-rate-good';
+                            } else if (rate <= 30) {
+                                rateClass = 'cost-rate-acceptable';
+                            } else if (rate <= 35) {
+                                rateClass = 'cost-rate-warning';
+                            } else {
+                                rateClass = 'cost-rate-danger';
+                            }
+
+                            return `
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <div>
+                                            <h3 class="text-lg font-semibold">${menu.name}</h3>
+                                            <p class="text-sm text-gray-600">販売価格: ¥${menu.price.toLocaleString()}</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-sm text-gray-600">原価: ¥${cost.toFixed(0)}</p>
+                                            <p class="text-sm"><span class="px-3 py-1 rounded ${rateClass} font-semibold">${rate.toFixed(1)}%</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 rounded p-3 mb-3">
+                                        <p class="text-xs font-semibold text-gray-700 mb-2">使用材料:</p>
+                                        <ul class="text-xs text-gray-600 space-y-1">
+                                            ${menu.materials.map(m => {
+                                                const material = data[currentLocation].materials.find(mat => mat.id === m.materialId);
+                                                if (!material) return '';
+                                                const itemCost = (material.price / material.quantity) * m.quantity;
+                                                return `<li>• ${material.name}: ${m.quantity}${material.unit} (¥${itemCost.toFixed(0)})</li>`;
+                                            }).join('')}
+                                        </ul>
+                                    </div>
+                                    <button onclick="deleteMenu(${menu.id})" class="text-red-600 hover:text-red-800 text-sm">メニューを削除</button>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            document.getElementById('registeredMenuList').innerHTML = html;
+        }
+
+        // メニュー原価計算
+        function calculateMenuCost(menu) {
+            let totalCost = 0;
+            menu.materials.forEach(m => {
+                const material = data[currentLocation].materials.find(mat => mat.id === m.materialId);
+                if (material) {
+                    totalCost += (material.price / material.quantity) * m.quantity;
+                }
+            });
+            return totalCost;
+        }
+
+        // メニュー削除
+        function deleteMenu(id) {
+            if (confirm('このメニューを削除してもよろしいですか？')) {
+                data[currentLocation].menus = data[currentLocation].menus.filter(m => m.id !== id);
+                saveData();
+                renderMenuList();
+                renderRegisteredMenuList();
+            }
+        }
+
+        // データ保存
+        function saveData() {
+            localStorage.setItem('housekibaco-genka-data', JSON.stringify(data));
+        }
+
+        // データ読み込み
+        function loadData() {
+            const saved = localStorage.getItem('housekibaco-genka-data');
+            if (saved) {
+                const loadedData = JSON.parse(saved);
+
+                // 古いデータ構造からのマイグレーション
+                if (loadedData.nara) {
+                    data.housekibaco = loadedData.nara;
+                }
+                if (loadedData.ginza) {
+                    data.sousuke = loadedData.ginza;
+                }
+
+                // 新しいデータ構造の場合はそのまま使用
+                if (loadedData.housekibaco || loadedData.sousuke || loadedData.nigatsudo || loadedData.event) {
+                    data = loadedData;
+
+                    // 存在しない拠点のデータ構造を追加
+                    if (!data.housekibaco) data.housekibaco = { materials: [], menus: [] };
+                    if (!data.sousuke) data.sousuke = { materials: [], menus: [] };
+                    if (!data.nigatsudo) data.nigatsudo = { materials: [], menus: [] };
+                    if (!data.event) data.event = { materials: [], menus: [] };
+                }
+            }
+        }
+
+        // データエクスポート
+        function exportData() {
+            const dataStr = JSON.stringify(data, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `housekibaco-genka-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // データインポート
+        function importData(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const imported = JSON.parse(e.target.result);
+                        if (confirm('データをインポートしますか？現在のデータは上書きされます。')) {
+                            data = imported;
+                            saveData();
+                            renderMaterialsList();
+                            renderMenuList();
+                            renderRegisteredMenuList();
+                            alert('データをインポートしました');
+                        }
+                    } catch (error) {
+                        alert('ファイルの読み込みに失敗しました');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        // CSVテンプレートダウンロード
+        function downloadCSVTemplate() {
+            const template = '材料名,仕入単価,容量,単位\nいちご,3000,1000,g\n練乳,800,500,ml\n抹茶粉,2500,100,g';
+            const blob = new Blob([template], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '材料マスタ_テンプレート.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // CSVインポート
+        async function importCSV(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                try {
+                    const text = e.target.result;
+                    const lines = text.split('\n');
+
+                    // ヘッダー行をスキップ
+                    let importCount = 0;
+                    let errorCount = 0;
+                    const errors = [];
+
+                    for (let i = 1; i < lines.length; i++) {
+                        const line = lines[i].trim();
+                        if (!line) continue;
+
+                        const columns = line.split(',');
+
+                        if (columns.length < 4) {
+                            errors.push(`行${i + 1}: 列が不足しています`);
+                            errorCount++;
+                            continue;
+                        }
+
+                        const materialName = columns[0].trim();
+                        const price = parseFloat(columns[1]);
+                        const quantity = parseFloat(columns[2]);
+                        const unit = columns[3].trim();
+
+                        // バリデーション
+                        if (!materialName || isNaN(price) || isNaN(quantity) || !unit) {
+                            errors.push(`行${i + 1}: データが不正です`);
+                            errorCount++;
+                            continue;
+                        }
+
+                        // 材料を追加
+                        const material = {
+                            id: Date.now() + i,
+                            name: materialName,
+                            price: price,
+                            quantity: quantity,
+                            unit: unit
+                        };
+
+                        // ローカルに保存
+                        data[currentLocation].materials.push(material);
+                        importCount++;
+                    }
+
+                    // データを保存して画面を更新
+                    saveData();
+                    renderMaterialsList();
+                    updateMaterialSelects();
+
+                    // スプレッドシートに一括同期
+                    if (useGoogleSheet && importCount > 0) {
+                        try {
+                            const locationJa = locationNames[currentLocation];
+                            const response = await fetch(GOOGLE_SHEET_API_URL, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    action: 'sync',
+                                    location: locationJa,
+                                    materials: data[currentLocation].materials
+                                })
+                            });
+
+                            const result = await response.json();
+                            if (!result.success) {
+                                console.error('スプレッドシート同期エラー:', result.error);
+                            }
+                        } catch (error) {
+                            console.error('スプレッドシート同期エラー:', error);
+                        }
+                    }
+
+                    // 結果を表示
+                    let message = `${importCount}件の材料を登録しました`;
+                    if (useGoogleSheet && importCount > 0) {
+                        message += '\n\nスプレッドシートにも同期しました';
+                    }
+                    if (errorCount > 0) {
+                        message += `\n\n${errorCount}件のエラーがありました:\n${errors.slice(0, 5).join('\n')}`;
+                        if (errors.length > 5) {
+                            message += `\n... 他${errors.length - 5}件`;
+                        }
+                    }
+                    alert(message);
+
+                    // ファイル選択をリセット
+                    event.target.value = '';
+
+                } catch (error) {
+                    console.error('CSVインポートエラー:', error);
+                    alert('CSVファイルの読み込みに失敗しました。形式を確認してください。');
+                }
+            };
+            reader.readAsText(file, 'UTF-8');
+        }
+    </script>
+</body>
+</html>
