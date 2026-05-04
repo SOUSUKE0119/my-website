@@ -177,7 +177,7 @@
 
     <script>
         // ★★★ ここにGoogle Apps ScriptのウェブアプリURLを設定してください ★★★
-        const GOOGLE_SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbzLpdJP_8KNM3y4dZxBBKLGOE8eh2ykKy21Yrii34519HdZkoz6e2W1viStyZbeReH6/exec';
+        const GOOGLE_SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbzLntDJ0UDLoMmcBlM1XvU1yr8aTGd7PdvXz3KfEjoD2KOqdKNVNexe3DtlMf21Rd0T/exec';
         // 例: 'https://script.google.com/macros/s/AKfycby.../exec'
 
         // データ構造
@@ -253,16 +253,17 @@
 
             try {
                 const locationJa = locationNames[currentLocation];
-                const response = await fetch(GOOGLE_SHEET_API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        action: 'add',
-                        location: locationJa,
-                        material: material
-                    })
+                const params = new URLSearchParams({
+                    action: 'add',
+                    location: locationJa,
+                    id: material.id,
+                    name: material.name,
+                    price: material.price,
+                    quantity: material.quantity,
+                    unit: material.unit
                 });
 
+                const response = await fetch(`${GOOGLE_SHEET_API_URL}?${params.toString()}`);
                 const result = await response.json();
                 return result.success;
             } catch (error) {
@@ -277,16 +278,13 @@
 
             try {
                 const locationJa = locationNames[currentLocation];
-                const response = await fetch(GOOGLE_SHEET_API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        action: 'delete',
-                        location: locationJa,
-                        id: id
-                    })
+                const params = new URLSearchParams({
+                    action: 'delete',
+                    location: locationJa,
+                    id: id
                 });
 
+                const response = await fetch(`${GOOGLE_SHEET_API_URL}?${params.toString()}`);
                 const result = await response.json();
                 return result.success;
             } catch (error) {
@@ -308,20 +306,17 @@
 
             try {
                 const locationJa = locationNames[currentLocation];
-                const response = await fetch(GOOGLE_SHEET_API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        action: 'sync',
-                        location: locationJa,
-                        materials: data[currentLocation].materials
-                    })
+                const params = new URLSearchParams({
+                    action: 'sync',
+                    location: locationJa,
+                    materials: JSON.stringify(data[currentLocation].materials)
                 });
 
+                const response = await fetch(`${GOOGLE_SHEET_API_URL}?${params.toString()}`);
                 const result = await response.json();
 
                 if (result.success) {
-                    alert('材料マスタを同期しました');
+                    alert(`材料マスタを同期しました (${result.count}件)`);
                 } else {
                     alert('同期に失敗しました: ' + (result.error || '不明なエラー'));
                 }
@@ -853,16 +848,13 @@
                     if (useGoogleSheet && importCount > 0) {
                         try {
                             const locationJa = locationNames[currentLocation];
-                            const response = await fetch(GOOGLE_SHEET_API_URL, {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({
-                                    action: 'sync',
-                                    location: locationJa,
-                                    materials: data[currentLocation].materials
-                                })
+                            const params = new URLSearchParams({
+                                action: 'sync',
+                                location: locationJa,
+                                materials: JSON.stringify(data[currentLocation].materials)
                             });
 
+                            const response = await fetch(`${GOOGLE_SHEET_API_URL}?${params.toString()}`);
                             const result = await response.json();
                             if (!result.success) {
                                 console.error('スプレッドシート同期エラー:', result.error);
