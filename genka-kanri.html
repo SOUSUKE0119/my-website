@@ -87,7 +87,7 @@
                     <li>「📄 CSV一括登録」ボタンでファイルを選択</li>
                     <li>自動的に材料マスタとスプレッドシートに登録されます</li>
                 </ol>
-                <p class="text-xs text-amber-700 mt-2">CSV形式: <code class="bg-white px-1 py-0.5 rounded">材料名,仕入単価,容量,単位</code></p>
+                <p class="text-xs text-amber-700 mt-2">CSV形式: <code class="bg-white px-1 py-0.5 rounded">材料名,仕入単価（税抜）,容量,単位</code></p>
             </div>
             <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
                 <div class="flex justify-between items-center mb-4">
@@ -100,7 +100,7 @@
                 </div>
                 <form id="materialForm" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                     <input type="text" id="materialName" placeholder="材料名" required class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
-                    <input type="number" id="materialPrice" placeholder="仕入単価（円）" required step="0.01" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    <input type="number" id="materialPrice" placeholder="仕入単価（税抜・円）" required step="0.01" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
                     <input type="number" id="materialQuantity" placeholder="容量" required step="0.01" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
                     <select id="materialUnit" required class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
                         <option value="">単位を選択</option>
@@ -137,7 +137,12 @@
                 <form id="menuForm">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <input type="text" id="menuName" placeholder="メニュー名" required class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
-                        <input type="number" id="menuPrice" placeholder="販売価格（円）" required step="1" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
+                        <input type="number" id="menuPrice" placeholder="売価（税抜・円）" required step="1" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    </div>
+                    <div class="mb-4 text-sm text-gray-600">
+                        <span>税込価格：</span>
+                        <span id="taxIncludedPreview" class="font-semibold text-gray-800">¥0</span>
+                        <span class="ml-2 text-xs text-gray-500">（消費税10%）</span>
                     </div>
 
                     <div class="mb-6">
@@ -419,7 +424,7 @@
                         <thead class="bg-gray-50 border-b border-gray-200">
                             <tr>
                                 <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">材料名</th>
-                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">仕入単価</th>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">仕入単価（税抜）</th>
                                 <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">容量</th>
                                 <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">単位あたり単価</th>
                                 <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">操作</th>
@@ -529,8 +534,18 @@
             }
         }
 
-        // 販売価格変更時も原価率を更新
-        document.getElementById('menuPrice').addEventListener('input', updateCost);
+        // 販売価格変更時に原価率と税込価格を更新
+        document.getElementById('menuPrice').addEventListener('input', function() {
+            updateCost();
+            updateTaxIncludedPreview();
+        });
+
+        // 税込価格のプレビュー更新
+        function updateTaxIncludedPreview() {
+            const priceExTax = parseFloat(document.getElementById('menuPrice').value) || 0;
+            const priceIncTax = Math.floor(priceExTax * 1.1);
+            document.getElementById('taxIncludedPreview').textContent = `¥${priceIncTax.toLocaleString()}`;
+        }
 
         // メニュー登録
         document.getElementById('menuForm').addEventListener('submit', function(e) {
@@ -553,10 +568,12 @@
                 return;
             }
 
+            const priceExTax = parseFloat(document.getElementById('menuPrice').value);
             const menu = {
                 id: Date.now(),
                 name: document.getElementById('menuName').value,
-                price: parseFloat(document.getElementById('menuPrice').value),
+                price: priceExTax,
+                priceIncTax: Math.floor(priceExTax * 1.1),
                 materials: materials
             };
 
@@ -582,7 +599,7 @@
                         <thead class="bg-gray-50 border-b border-gray-200">
                             <tr>
                                 <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">メニュー名</th>
-                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">販売価格</th>
+                                <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">売価（税抜 / 税込）</th>
                                 <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">原価</th>
                                 <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">原価率</th>
                                 <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">評価</th>
@@ -611,10 +628,15 @@
                                     rateLabel = '要改善';
                                 }
 
+                                const priceIncTax = menu.priceIncTax || Math.floor(menu.price * 1.1);
+
                                 return `
                                     <tr class="hover:bg-gray-50">
                                         <td class="px-4 py-3 text-sm font-medium">${menu.name}</td>
-                                        <td class="px-4 py-3 text-sm">¥${menu.price.toLocaleString()}</td>
+                                        <td class="px-4 py-3 text-sm">
+                                            <div>¥${menu.price.toLocaleString()} / ¥${priceIncTax.toLocaleString()}</div>
+                                            <div class="text-xs text-gray-500">税抜 / 税込</div>
+                                        </td>
                                         <td class="px-4 py-3 text-sm">¥${cost.toFixed(0)}</td>
                                         <td class="px-4 py-3 text-sm"><span class="px-3 py-1 rounded ${rateClass} font-semibold">${rate.toFixed(1)}%</span></td>
                                         <td class="px-4 py-3 text-sm"><span class="px-3 py-1 rounded ${rateClass}">${rateLabel}</span></td>
@@ -651,12 +673,14 @@
                                 rateClass = 'cost-rate-danger';
                             }
 
+                            const priceIncTax = menu.priceIncTax || Math.floor(menu.price * 1.1);
+
                             return `
                                 <div class="border border-gray-200 rounded-lg p-4">
                                     <div class="flex justify-between items-start mb-3">
                                         <div>
                                             <h3 class="text-lg font-semibold">${menu.name}</h3>
-                                            <p class="text-sm text-gray-600">販売価格: ¥${menu.price.toLocaleString()}</p>
+                                            <p class="text-sm text-gray-600">売価: ¥${menu.price.toLocaleString()}（税抜）/ ¥${priceIncTax.toLocaleString()}（税込）</p>
                                         </div>
                                         <div class="text-right">
                                             <p class="text-sm text-gray-600">原価: ¥${cost.toFixed(0)}</p>
@@ -775,7 +799,7 @@
 
         // CSVテンプレートダウンロード
         function downloadCSVTemplate() {
-            const template = '材料名,仕入単価,容量,単位\nいちご,3000,1000,g\n練乳,800,500,ml\n抹茶粉,2500,100,g';
+            const template = '材料名,仕入単価（税抜）,容量,単位\nいちご,3000,1000,g\n練乳,800,500,ml\n抹茶粉,2500,100,g';
             const blob = new Blob([template], { type: 'text/csv;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
