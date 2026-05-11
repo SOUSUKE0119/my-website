@@ -166,7 +166,10 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 font-semibold">メニューを登録</button>
+                    <div class="flex gap-3">
+                        <button type="submit" id="menuSubmitBtn" class="flex-1 px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 font-semibold">メニューを登録</button>
+                        <button type="button" id="menuCancelBtn" onclick="cancelEditMenu()" class="hidden px-6 py-3 bg-gray-400 text-white rounded-lg hover:bg-gray-500 font-semibold">キャンセル</button>
+                    </div>
                 </form>
             </div>
 
@@ -207,6 +210,7 @@
 
         let currentLocation = 'housekibaco';
         let useGoogleSheet = false; // スプレッドシート連携の有効/無効
+        let editingMenuId = null;
 
         // 拠点名の日本語変換
         const locationNames = {
@@ -432,12 +436,13 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                             ${materials.map(m => `
-                                <tr class="hover:bg-gray-50">
+                                <tr class="hover:bg-gray-50" data-material-id="${m.id}">
                                     <td class="px-4 py-3 text-sm">${m.name}</td>
                                     <td class="px-4 py-3 text-sm">¥${m.price.toLocaleString()}</td>
                                     <td class="px-4 py-3 text-sm">${m.quantity}${m.unit}</td>
                                     <td class="px-4 py-3 text-sm">¥${(m.price / m.quantity).toFixed(2)}/${m.unit}</td>
                                     <td class="px-4 py-3 text-sm">
+                                        <button onclick="editMaterial(${m.id})" class="text-blue-600 hover:text-blue-800 mr-3">編集</button>
                                         <button onclick="deleteMaterial(${m.id})" class="text-red-600 hover:text-red-800">削除</button>
                                     </td>
                                 </tr>
@@ -547,7 +552,7 @@
             document.getElementById('taxIncludedPreview').textContent = `¥${priceIncTax.toLocaleString()}`;
         }
 
-        // メニュー登録
+        // メニュー登録・更新
         document.getElementById('menuForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -569,24 +574,39 @@
             }
 
             const priceExTax = parseFloat(document.getElementById('menuPrice').value);
-            const menu = {
-                id: Date.now(),
-                name: document.getElementById('menuName').value,
-                price: priceExTax,
-                priceIncTax: Math.floor(priceExTax * 1.1),
-                materials: materials
-            };
 
-            data[currentLocation].menus.push(menu);
+            if (editingMenuId !== null) {
+                const menu = data[currentLocation].menus.find(m => m.id === editingMenuId);
+                if (menu) {
+                    menu.name = document.getElementById('menuName').value;
+                    menu.price = priceExTax;
+                    menu.priceIncTax = Math.floor(priceExTax * 1.1);
+                    menu.materials = materials;
+                }
+                editingMenuId = null;
+                document.getElementById('menuSubmitBtn').textContent = 'メニューを登録';
+                document.getElementById('menuCancelBtn').classList.add('hidden');
+                alert('メニューを更新しました');
+            } else {
+                const menu = {
+                    id: Date.now(),
+                    name: document.getElementById('menuName').value,
+                    price: priceExTax,
+                    priceIncTax: Math.floor(priceExTax * 1.1),
+                    materials: materials
+                };
+                data[currentLocation].menus.push(menu);
+                alert('メニューを登録しました');
+            }
+
             saveData();
             renderMenuList();
             renderRegisteredMenuList();
             this.reset();
             document.getElementById('menuMaterials').innerHTML = '';
+            document.getElementById('taxIncludedPreview').textContent = '¥0';
             addMaterialRow();
             updateCost();
-
-            alert('メニューを登録しました');
         });
 
         // メニュー一覧表示（ダッシュボード）
@@ -698,7 +718,10 @@
                                             }).join('')}
                                         </ul>
                                     </div>
-                                    <button onclick="deleteMenu(${menu.id})" class="text-red-600 hover:text-red-800 text-sm">メニューを削除</button>
+                                    <div class="flex gap-4">
+                                        <button onclick="editMenu(${menu.id})" class="text-blue-600 hover:text-blue-800 text-sm">編集</button>
+                                        <button onclick="deleteMenu(${menu.id})" class="text-red-600 hover:text-red-800 text-sm">削除</button>
+                                    </div>
                                 </div>
                             `;
                         }).join('')}
@@ -717,6 +740,109 @@
                 }
             });
             return totalCost;
+        }
+
+        // 材料インライン編集
+        function editMaterial(id) {
+            const material = data[currentLocation].materials.find(m => m.id === id);
+            if (!material) return;
+
+            const row = document.querySelector(`tr[data-material-id="${id}"]`);
+            if (!row) return;
+
+            const units = ['g', 'kg', '貫', 'ml', 'L', '個', '枚', '本', '袋', '缶', 'パック', '束', '玉'];
+            row.innerHTML = `
+                <td class="px-2 py-2"><input type="text" id="edit-name-${id}" value="${material.name}" class="w-full px-2 py-1 border border-gray-300 rounded text-sm"></td>
+                <td class="px-2 py-2"><input type="number" id="edit-price-${id}" value="${material.price}" step="0.01" class="w-full px-2 py-1 border border-gray-300 rounded text-sm"></td>
+                <td class="px-2 py-2"><input type="number" id="edit-quantity-${id}" value="${material.quantity}" step="0.01" class="w-full px-2 py-1 border border-gray-300 rounded text-sm"></td>
+                <td class="px-2 py-2">
+                    <select id="edit-unit-${id}" class="w-full px-2 py-1 border border-gray-300 rounded text-sm">
+                        ${units.map(u => `<option value="${u}" ${u === material.unit ? 'selected' : ''}>${u}</option>`).join('')}
+                    </select>
+                </td>
+                <td class="px-2 py-2 text-sm whitespace-nowrap">
+                    <button onclick="saveMaterialEdit(${id})" class="text-blue-600 hover:text-blue-800 mr-2">保存</button>
+                    <button onclick="renderMaterialsList()" class="text-gray-500 hover:text-gray-700">キャンセル</button>
+                </td>
+            `;
+        }
+
+        // 材料編集保存
+        async function saveMaterialEdit(id) {
+            const name = document.getElementById(`edit-name-${id}`).value.trim();
+            const price = parseFloat(document.getElementById(`edit-price-${id}`).value);
+            const quantity = parseFloat(document.getElementById(`edit-quantity-${id}`).value);
+            const unit = document.getElementById(`edit-unit-${id}`).value;
+
+            if (!name || isNaN(price) || isNaN(quantity) || !unit) {
+                alert('すべての項目を正しく入力してください');
+                return;
+            }
+
+            const idx = data[currentLocation].materials.findIndex(m => m.id === id);
+            if (idx === -1) return;
+
+            data[currentLocation].materials[idx] = { ...data[currentLocation].materials[idx], name, price, quantity, unit };
+            saveData();
+
+            if (useGoogleSheet) {
+                try {
+                    const locationJa = locationNames[currentLocation];
+                    const params = new URLSearchParams({
+                        action: 'sync',
+                        location: locationJa,
+                        materials: JSON.stringify(data[currentLocation].materials)
+                    });
+                    await fetch(`${GOOGLE_SHEET_API_URL}?${params.toString()}`);
+                } catch (error) {
+                    console.error('同期エラー:', error);
+                }
+            }
+
+            renderMaterialsList();
+            renderMenuList();
+            renderRegisteredMenuList();
+            updateMaterialSelects();
+        }
+
+        // メニュー編集（フォームに読み込み）
+        function editMenu(id) {
+            const menu = data[currentLocation].menus.find(m => m.id === id);
+            if (!menu) return;
+
+            editingMenuId = id;
+
+            document.getElementById('menuName').value = menu.name;
+            document.getElementById('menuPrice').value = menu.price;
+            updateTaxIncludedPreview();
+
+            const container = document.getElementById('menuMaterials');
+            container.innerHTML = '';
+            menu.materials.forEach(m => {
+                addMaterialRow();
+                const lastRow = container.lastElementChild;
+                lastRow.querySelector('.material-select').value = m.materialId;
+                lastRow.querySelector('.material-quantity').value = m.quantity;
+            });
+            updateCost();
+
+            document.getElementById('menuSubmitBtn').textContent = 'メニューを更新';
+            document.getElementById('menuCancelBtn').classList.remove('hidden');
+
+            switchTab('menu');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // メニュー編集キャンセル
+        function cancelEditMenu() {
+            editingMenuId = null;
+            document.getElementById('menuForm').reset();
+            document.getElementById('menuMaterials').innerHTML = '';
+            document.getElementById('taxIncludedPreview').textContent = '¥0';
+            addMaterialRow();
+            updateCost();
+            document.getElementById('menuSubmitBtn').textContent = 'メニューを登録';
+            document.getElementById('menuCancelBtn').classList.add('hidden');
         }
 
         // メニュー削除
